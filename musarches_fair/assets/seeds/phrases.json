@@ -1,0 +1,1605 @@
+{
+  "phrases": [
+    {
+      "id": "en_0001",
+      "phrase": "in the morning",
+      "tokens": [
+        "in",
+        "the",
+        "morning"
+      ],
+      "simple_def": "during the early part of the day, before noon",
+      "examples": [
+        "I drink coffee in the morning.",
+        "The streets are quiet in the morning."
+      ],
+      "pitfalls": [
+        "morning 容易漏掉词尾的 n",
+        "the 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「在早晨」的短语，以 i 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0002",
+      "phrase": "in the afternoon",
+      "tokens": [
+        "in",
+        "the",
+        "afternoon"
+      ],
+      "simple_def": "during the middle part of the day, after noon",
+      "examples": [
+        "We have a meeting in the afternoon.",
+        "She takes a nap in the afternoon."
+      ],
+      "pitfalls": [
+        "afternoon 容易写成 afternon",
+        "the 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「在下午」的短语，以 i 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0003",
+      "phrase": "in the evening",
+      "tokens": [
+        "in",
+        "the",
+        "evening"
+      ],
+      "simple_def": "during the later part of the day, before night",
+      "examples": [
+        "They go for a walk in the evening.",
+        "I read a book in the evening."
+      ],
+      "pitfalls": [
+        "evening 容易漏掉中间的 e",
+        "the 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「在傍晚」的短语，以 i 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0004",
+      "phrase": "at night",
+      "tokens": [
+        "at",
+        "night"
+      ],
+      "simple_def": "during the dark hours when people usually sleep",
+      "examples": [
+        "The stars are bright at night.",
+        "He studies at night."
+      ],
+      "pitfalls": [
+        "night 容易漏掉不发音的 gh",
+        "at 容易和 in 混淆"
+      ],
+      "hint_script": "你想起了一句表示「在晚上」的短语，以 a 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0005",
+      "phrase": "get up",
+      "tokens": [
+        "get",
+        "up"
+      ],
+      "simple_def": "to rise from bed and start your day",
+      "examples": [
+        "I get up at seven every day.",
+        "She gets up early on weekdays."
+      ],
+      "pitfalls": [
+        "get 容易误写成 gets",
+        "up 容易漏掉末尾的 p"
+      ],
+      "hint_script": "你想起了一句表示「起床」的短语，以 g 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0006",
+      "phrase": "go to school",
+      "tokens": [
+        "go",
+        "to",
+        "school"
+      ],
+      "simple_def": "to go to a place where children learn",
+      "examples": [
+        "The children go to school by bus.",
+        "I go to school on foot."
+      ],
+      "pitfalls": [
+        "school 容易漏掉中间的 h",
+        "to 容易和 for 混淆"
+      ],
+      "hint_script": "你想起了一句表示「去上学」的短语，以 g 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0007",
+      "phrase": "at home",
+      "tokens": [
+        "at",
+        "home"
+      ],
+      "simple_def": "in the place where you live",
+      "examples": [
+        "My father is at home now.",
+        "She stays at home on Sundays."
+      ],
+      "pitfalls": [
+        "home 容易误写成 hume",
+        "at 容易和 in 混淆"
+      ],
+      "hint_script": "你想起了一句表示「在家」的短语，以 a 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0008",
+      "phrase": "at school",
+      "tokens": [
+        "at",
+        "school"
+      ],
+      "simple_def": "inside the building where students study",
+      "examples": [
+        "We learn many things at school.",
+        "He is at school until four."
+      ],
+      "pitfalls": [
+        "school 容易漏掉中间的 h",
+        "at 容易和 in 混淆"
+      ],
+      "hint_script": "你想起了一句表示「在学校」的短语，以 a 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0009",
+      "phrase": "in front of",
+      "tokens": [
+        "in",
+        "front",
+        "of"
+      ],
+      "simple_def": "in the position ahead of something",
+      "examples": [
+        "The car is parked in front of the house.",
+        "She stood in front of the mirror."
+      ],
+      "pitfalls": [
+        "front 容易误写成 frant",
+        "of 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「在……前面」的短语，以 i 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0010",
+      "phrase": "on the way home",
+      "tokens": [
+        "on",
+        "the",
+        "way",
+        "home"
+      ],
+      "simple_def": "while traveling back to your house",
+      "examples": [
+        "I bought some bread on the way home.",
+        "She called her mother on the way home."
+      ],
+      "pitfalls": [
+        "way 容易漏掉中间的 a",
+        "home 容易误写成 hume"
+      ],
+      "hint_script": "你想起了一句表示「在回家路上」的短语，以 o 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0011",
+      "phrase": "look at",
+      "tokens": [
+        "look",
+        "at"
+      ],
+      "simple_def": "to direct your eyes toward something",
+      "examples": [
+        "Please look at this picture.",
+        "He looked at the sky for a while."
+      ],
+      "pitfalls": [
+        "look 容易误写成 lok",
+        "at 容易漏掉"
+      ],
+      "hint_script": "你想起了一句表示「看」的短语，以 l 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0012",
+      "phrase": "listen to",
+      "tokens": [
+        "listen",
+        "to"
+      ],
+      "simple_def": "to give attention to a sound",
+      "examples": [
+        "I listen to music every night.",
+        "She likes to listen to the radio."
+      ],
+      "pitfalls": [
+        "listen 容易漏掉中间的 e",
+        "to 容易和 for 混淆"
+      ],
+      "hint_script": "你想起了一句表示「听」的短语，以 l 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0013",
+      "phrase": "look for",
+      "tokens": [
+        "look",
+        "for"
+      ],
+      "simple_def": "to try to locate something you lost",
+      "examples": [
+        "I need to look for my keys.",
+        "They look for a new house."
+      ],
+      "pitfalls": [
+        "look 容易误写成 lok",
+        "for 容易漏掉"
+      ],
+      "hint_script": "你想起了一句表示「寻找」的短语，以 l 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0014",
+      "phrase": "talk to",
+      "tokens": [
+        "talk",
+        "to"
+      ],
+      "simple_def": "to speak with someone",
+      "examples": [
+        "I want to talk to you.",
+        "She will talk to the teacher tomorrow."
+      ],
+      "pitfalls": [
+        "talk 容易漏掉中间的 l",
+        "to 容易和 for 混淆"
+      ],
+      "hint_script": "你想起了一句表示「与……交谈」的短语，以 t 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0015",
+      "phrase": "wait for",
+      "tokens": [
+        "wait",
+        "for"
+      ],
+      "simple_def": "to stay until something happens",
+      "examples": [
+        "Please wait for me here.",
+        "We wait for the bus every morning."
+      ],
+      "pitfalls": [
+        "wait 容易误写成 wate",
+        "for 容易漏掉"
+      ],
+      "hint_script": "你想起了一句表示「等待」的短语，以 w 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0016",
+      "phrase": "take off",
+      "tokens": [
+        "take",
+        "off"
+      ],
+      "simple_def": "to leave the ground and start flying",
+      "examples": [
+        "The plane will take off soon.",
+        "Please take off your shoes."
+      ],
+      "pitfalls": [
+        "take 容易误写成 tak",
+        "off 容易漏掉末尾的 f"
+      ],
+      "hint_script": "你想起了一句表示「起飞，脱下」的短语，以 t 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0017",
+      "phrase": "get on the bus",
+      "tokens": [
+        "get",
+        "on",
+        "the",
+        "bus"
+      ],
+      "simple_def": "to board a public vehicle",
+      "examples": [
+        "We get on the bus at the station.",
+        "She helped him get on the bus."
+      ],
+      "pitfalls": [
+        "bus 容易漏掉末尾的 s",
+        "get 容易误写成 gets"
+      ],
+      "hint_script": "你想起了一句表示「上公交车」的短语，以 g 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0018",
+      "phrase": "put on your shoes",
+      "tokens": [
+        "put",
+        "on",
+        "your",
+        "shoes"
+      ],
+      "simple_def": "to dress yourself in clothes",
+      "examples": [
+        "Please put on your shoes quickly.",
+        "You should put on your shoes before school."
+      ],
+      "pitfalls": [
+        "shoes 容易漏掉中间的 e",
+        "put 容易误写成 puts"
+      ],
+      "hint_script": "你想起了一句表示「穿上你的鞋」的短语，以 p 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0019",
+      "phrase": "turn on",
+      "tokens": [
+        "turn",
+        "on"
+      ],
+      "simple_def": "to start a device or light",
+      "examples": [
+        "Please turn on the light.",
+        "He turned on the radio."
+      ],
+      "pitfalls": [
+        "turn 容易漏掉中间的 r",
+        "on 容易和 of 混淆"
+      ],
+      "hint_script": "你想起了一句表示「打开」的短语，以 t 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0020",
+      "phrase": "turn off",
+      "tokens": [
+        "turn",
+        "off"
+      ],
+      "simple_def": "to stop a device or light",
+      "examples": [
+        "Please turn off the light.",
+        "She turned off the fan."
+      ],
+      "pitfalls": [
+        "turn 容易漏掉中间的 r",
+        "off 容易漏掉末尾的 f"
+      ],
+      "hint_script": "你想起了一句表示「关掉」的短语，以 t 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0021",
+      "phrase": "come back",
+      "tokens": [
+        "come",
+        "back"
+      ],
+      "simple_def": "to return to a place",
+      "examples": [
+        "Please come back soon.",
+        "They will come back tomorrow."
+      ],
+      "pitfalls": [
+        "come 容易漏掉末尾的 e",
+        "back 容易漏掉末尾的 k"
+      ],
+      "hint_script": "你想起了一句表示「回来」的短语，以 c 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0022",
+      "phrase": "go back",
+      "tokens": [
+        "go",
+        "back"
+      ],
+      "simple_def": "to return to a previous place",
+      "examples": [
+        "I need to go back home.",
+        "She will go back to work next week."
+      ],
+      "pitfalls": [
+        "back 容易漏掉末尾的 k",
+        "go 容易误写成 goes"
+      ],
+      "hint_script": "你想起了一句表示「返回」的短语，以 g 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0023",
+      "phrase": "come in",
+      "tokens": [
+        "come",
+        "in"
+      ],
+      "simple_def": "to enter a room or building",
+      "examples": [
+        "Please come in and sit down.",
+        "She asked him to come in."
+      ],
+      "pitfalls": [
+        "come 容易整套漏掉",
+        "in 容易和 on 混淆"
+      ],
+      "hint_script": "你想起了一句表示「进来」的短语，以 c 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0024",
+      "phrase": "go out",
+      "tokens": [
+        "go",
+        "out"
+      ],
+      "simple_def": "to leave home for fun",
+      "examples": [
+        "We go out for dinner on Fridays.",
+        "They go out to play after school."
+      ],
+      "pitfalls": [
+        "out 容易漏掉中间的 u",
+        "go 容易误写成 goes"
+      ],
+      "hint_script": "你想起了一句表示「出去」的短语，以 g 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0025",
+      "phrase": "look after",
+      "tokens": [
+        "look",
+        "after"
+      ],
+      "simple_def": "to take care of someone",
+      "examples": [
+        "I look after my little sister.",
+        "She looks after the garden every day."
+      ],
+      "pitfalls": [
+        "after 容易漏掉末尾的 r",
+        "look 容易误写成 lok"
+      ],
+      "hint_script": "你想起了一句表示「照顾」的短语，以 l 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0026",
+      "phrase": "look forward to",
+      "tokens": [
+        "look",
+        "forward",
+        "to"
+      ],
+      "simple_def": "to feel excited about the future",
+      "examples": [
+        "I look forward to your reply.",
+        "We look forward to seeing you soon."
+      ],
+      "pitfalls": [
+        "forward 容易漏掉中间的 r",
+        "to 容易和 for 混淆"
+      ],
+      "hint_script": "你想起了一句表示「期待」的短语，以 l 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0027",
+      "phrase": "find out",
+      "tokens": [
+        "find",
+        "out"
+      ],
+      "simple_def": "to discover information",
+      "examples": [
+        "I want to find out the truth.",
+        "Let us find out what happened."
+      ],
+      "pitfalls": [
+        "find 容易误写成 fand",
+        "out 容易漏掉中间的 u"
+      ],
+      "hint_script": "你想起了一句表示「查明」的短语，以 f 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0028",
+      "phrase": "give up",
+      "tokens": [
+        "give",
+        "up"
+      ],
+      "simple_def": "to stop trying something",
+      "examples": [
+        "Never give up your dream.",
+        "He decided to give up smoking."
+      ],
+      "pitfalls": [
+        "give 容易漏掉末尾的 e",
+        "up 容易漏掉末尾的 p"
+      ],
+      "hint_script": "你想起了一句表示「放弃」的短语，以 g 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0029",
+      "phrase": "take care of",
+      "tokens": [
+        "take",
+        "care",
+        "of"
+      ],
+      "simple_def": "to look after someone or something",
+      "examples": [
+        "Please take care of yourself.",
+        "She takes care of her parents."
+      ],
+      "pitfalls": [
+        "care 容易漏掉末尾的 e",
+        "of 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「照顾」的短语，以 t 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0030",
+      "phrase": "make sure",
+      "tokens": [
+        "make",
+        "sure"
+      ],
+      "simple_def": "to check that something is certain",
+      "examples": [
+        "Please make sure the door is locked.",
+        "We must make sure everyone is safe."
+      ],
+      "pitfalls": [
+        "sure 容易误写成 shure",
+        "make 容易误写成 mak"
+      ],
+      "hint_script": "你想起了一句表示「确保」的短语，以 m 开头",
+      "grammar_tag": "固定搭配",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0031",
+      "phrase": "find a way",
+      "tokens": [
+        "find",
+        "a",
+        "way"
+      ],
+      "simple_def": "to discover a method to do something",
+      "examples": [
+        "We can find a way to solve this.",
+        "She will find a way to help."
+      ],
+      "pitfalls": [
+        "way 容易漏掉中间的 a",
+        "find 容易误写成 fand"
+      ],
+      "hint_script": "你想起了一句表示「找到办法」的短语，以 f 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0032",
+      "phrase": "take part in",
+      "tokens": [
+        "take",
+        "part",
+        "in"
+      ],
+      "simple_def": "to join an activity",
+      "examples": [
+        "I want to take part in the game.",
+        "They take part in many activities."
+      ],
+      "pitfalls": [
+        "part 容易漏掉末尾的 t",
+        "in 容易和 at 混淆"
+      ],
+      "hint_script": "你想起了一句表示「参加」的短语，以 t 开头",
+      "grammar_tag": "固定搭配",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0033",
+      "phrase": "get ready for",
+      "tokens": [
+        "get",
+        "ready",
+        "for"
+      ],
+      "simple_def": "to prepare for something",
+      "examples": [
+        "We get ready for school in the morning.",
+        "She gets ready for the party now."
+      ],
+      "pitfalls": [
+        "ready 容易漏掉中间的 a",
+        "for 容易和 to 混淆"
+      ],
+      "hint_script": "你想起了一句表示「为……做准备」的短语，以 g 开头",
+      "grammar_tag": "固定搭配",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0034",
+      "phrase": "be good at",
+      "tokens": [
+        "be",
+        "good",
+        "at"
+      ],
+      "simple_def": "to be skilled at something",
+      "examples": [
+        "I want to be good at English.",
+        "She tries to be good at sports."
+      ],
+      "pitfalls": [
+        "good 容易漏掉中间的 o",
+        "at 容易和 in 混淆"
+      ],
+      "hint_script": "你想起了一句表示「擅长」的短语，以 b 开头",
+      "grammar_tag": "形容词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0035",
+      "phrase": "be afraid of",
+      "tokens": [
+        "be",
+        "afraid",
+        "of"
+      ],
+      "simple_def": "to feel fear about something",
+      "examples": [
+        "Do not be afraid of making mistakes.",
+        "I used to be afraid of dogs."
+      ],
+      "pitfalls": [
+        "afraid 容易漏掉中间的 a",
+        "of 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「害怕」的短语，以 b 开头",
+      "grammar_tag": "形容词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0036",
+      "phrase": "as soon as",
+      "tokens": [
+        "as",
+        "soon",
+        "as"
+      ],
+      "simple_def": "immediately when something happens",
+      "examples": [
+        "Call me as soon as you arrive.",
+        "She left as soon as it stopped raining."
+      ],
+      "pitfalls": [
+        "soon 容易漏掉中间的 o",
+        "as 容易整套漏掉"
+      ],
+      "hint_script": "你想起了一句表示「一……就……」的短语，以 a 开头",
+      "grammar_tag": "固定搭配",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0037",
+      "phrase": "as well as",
+      "tokens": [
+        "as",
+        "well",
+        "as"
+      ],
+      "simple_def": "in addition to something else",
+      "examples": [
+        "He sings as well as dances.",
+        "She plays tennis as well as her brother."
+      ],
+      "pitfalls": [
+        "well 容易漏掉中间的 e",
+        "as 容易整套漏掉"
+      ],
+      "hint_script": "你想起了一句表示「也，以及」的短语，以 a 开头",
+      "grammar_tag": "固定搭配",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0038",
+      "phrase": "in spite of",
+      "tokens": [
+        "in",
+        "spite",
+        "of"
+      ],
+      "simple_def": "even though something is true",
+      "examples": [
+        "She went out in spite of the rain.",
+        "In spite of the noise, he slept well."
+      ],
+      "pitfalls": [
+        "spite 容易漏掉末尾的 e",
+        "of 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「尽管」的短语，以 i 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0039",
+      "phrase": "on top of the world",
+      "tokens": [
+        "on",
+        "top",
+        "of",
+        "the",
+        "world"
+      ],
+      "simple_def": "feeling extremely happy and proud",
+      "examples": [
+        "The team felt on top of the world after winning.",
+        "She was on top of the world when she passed."
+      ],
+      "pitfalls": [
+        "world 容易漏掉中间的 l",
+        "of 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「欣喜若狂」的短语，以 o 开头",
+      "grammar_tag": "形容词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0040",
+      "phrase": "by means of",
+      "tokens": [
+        "by",
+        "means",
+        "of"
+      ],
+      "simple_def": "using a particular method",
+      "examples": [
+        "He solved the problem by means of a new method.",
+        "She travels by means of public transport."
+      ],
+      "pitfalls": [
+        "means 容易漏掉末尾的 s",
+        "by 容易和 with 混淆"
+      ],
+      "hint_script": "你想起了一句表示「借助」的短语，以 b 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0041",
+      "phrase": "for the sake of peace",
+      "tokens": [
+        "for",
+        "the",
+        "sake",
+        "of",
+        "peace"
+      ],
+      "simple_def": "for the purpose of calm",
+      "examples": [
+        "They agreed for the sake of peace.",
+        "He kept quiet for the sake of peace."
+      ],
+      "pitfalls": [
+        "sake 容易漏掉末尾的 e",
+        "of 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「为了和平」的短语，以 f 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0042",
+      "phrase": "in terms of",
+      "tokens": [
+        "in",
+        "terms",
+        "of"
+      ],
+      "simple_def": "regarding a certain aspect",
+      "examples": [
+        "The movie is good in terms of acting.",
+        "We think in terms of results."
+      ],
+      "pitfalls": [
+        "terms 容易漏掉末尾的 s",
+        "in 容易和 on 混淆"
+      ],
+      "hint_script": "你想起了一句表示「就……而言」的短语，以 i 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0043",
+      "phrase": "at the same time",
+      "tokens": [
+        "at",
+        "the",
+        "same",
+        "time"
+      ],
+      "simple_def": "at the same moment as another",
+      "examples": [
+        "She laughed and cried at the same time.",
+        "They arrived at the same time."
+      ],
+      "pitfalls": [
+        "same 容易漏掉末尾的 e",
+        "at 容易和 in 混淆"
+      ],
+      "hint_script": "你想起了一句表示「同时」的短语，以 a 开头",
+      "grammar_tag": "固定搭配",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0044",
+      "phrase": "in charge of",
+      "tokens": [
+        "in",
+        "charge",
+        "of"
+      ],
+      "simple_def": "responsible for something",
+      "examples": [
+        "She is in charge of the project.",
+        "He is in charge of the kitchen."
+      ],
+      "pitfalls": [
+        "charge 容易漏掉末尾的 e",
+        "in 容易和 on 混淆"
+      ],
+      "hint_script": "你想起了一句表示「负责」的短语，以 i 开头",
+      "grammar_tag": "固定搭配",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0045",
+      "phrase": "in favor of",
+      "tokens": [
+        "in",
+        "favor",
+        "of"
+      ],
+      "simple_def": "supporting a choice or idea",
+      "examples": [
+        "I am in favor of the new plan.",
+        "They voted in favor of the change."
+      ],
+      "pitfalls": [
+        "favor 容易漏掉中间的 o",
+        "of 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「支持」的短语，以 i 开头",
+      "grammar_tag": "介词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0046",
+      "phrase": "come up with",
+      "tokens": [
+        "come",
+        "up",
+        "with"
+      ],
+      "simple_def": "to think of an idea or plan",
+      "examples": [
+        "Please come up with a better plan.",
+        "We can come up with a new idea."
+      ],
+      "pitfalls": [
+        "come 容易误写成 came",
+        "with 容易和 for 混淆"
+      ],
+      "hint_script": "你想起了一句表示「想出」的短语，以 c 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0047",
+      "phrase": "get along with",
+      "tokens": [
+        "get",
+        "along",
+        "with"
+      ],
+      "simple_def": "to have a friendly relationship",
+      "examples": [
+        "I get along with my classmates.",
+        "She gets along with everyone at work."
+      ],
+      "pitfalls": [
+        "along 容易漏掉末尾的 g",
+        "with 容易和 for 混淆"
+      ],
+      "hint_script": "你想起了一句表示「与……相处」的短语，以 g 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0048",
+      "phrase": "keep in touch",
+      "tokens": [
+        "keep",
+        "in",
+        "touch"
+      ],
+      "simple_def": "to stay in contact with someone",
+      "examples": [
+        "Please keep in touch with me.",
+        "We keep in touch with old friends."
+      ],
+      "pitfalls": [
+        "touch 容易漏掉中间的 u",
+        "keep 容易误写成 keeps"
+      ],
+      "hint_script": "你想起了一句表示「保持联系」的短语，以 k 开头",
+      "grammar_tag": "固定搭配",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "en_0049",
+      "phrase": "make up for",
+      "tokens": [
+        "make",
+        "up",
+        "for"
+      ],
+      "simple_def": "to compensate for something bad",
+      "examples": [
+        "We must make up for the delay.",
+        "I want to make up for lost time."
+      ],
+      "pitfalls": [
+        "make 容易误写成 made",
+        "for 容易和 to 混淆"
+      ],
+      "hint_script": "你想起了一句表示「弥补」的短语，以 m 开头",
+      "grammar_tag": "动词短语",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "en_0050",
+      "phrase": "take advantage of",
+      "tokens": [
+        "take",
+        "advantage",
+        "of"
+      ],
+      "simple_def": "to use a good opportunity",
+      "examples": [
+        "We can take advantage of the sale.",
+        "You should take advantage of this chance."
+      ],
+      "pitfalls": [
+        "advantage 容易漏掉末尾的 e",
+        "of 容易整个漏掉"
+      ],
+      "hint_script": "你想起了一句表示「利用」的短语，以 t 开头",
+      "grammar_tag": "固定搭配",
+      "audio_path": null,
+      "blank_priority": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

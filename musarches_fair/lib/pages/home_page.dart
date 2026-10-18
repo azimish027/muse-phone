@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 import 'time_block/sand_chron_page.dart';
 import 'web_view_page.dart';
+import 'lingua/lingua_home_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -118,6 +119,18 @@ class HomePage extends StatelessWidget {
 
   Widget _buildStallGrid(BuildContext context) {
     final stalls = [
+      _StallConfig(
+        icon: Icons.translate,
+        emoji: '📘',
+        name: '语言学习',
+        nameEn: 'Lingua Learn',
+        desc: '英/日/韩 · 课程体系 · 原生重写',
+        why: '原 语缪 Musarches Fair 主站，纯 Flutter 原生体验',
+        color: MusePalette.parchment,
+        isNative: true,
+        nativeBuilder: () => const LinguaHomePage(),
+        webAssetPath: null,
+      ),
       _StallConfig(
         icon: Icons.hourglass_top,
         emoji: '⏳',

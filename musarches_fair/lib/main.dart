@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'theme.dart';
 import 'db/database.dart';
+import 'db/lingua_repo.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -57,7 +58,10 @@ class _SplashBridgeState extends State<SplashBridge> {
 
   Future<void> _init() async {
     // 触发数据库 open（onCreate 里会 seed achievements + 默认用户）
-    await context.read<AppDatabase>().db;
+    final db = context.read<AppDatabase>();
+    await db.db;
+    // 导入语言种子数据（en/ja/ko + 短语）
+    await SeedLoader(db).loadAll();
     if (!mounted) return;
     setState(() => _ready = true);
   }
