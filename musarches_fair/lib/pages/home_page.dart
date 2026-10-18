@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('语缪 · Musē Phōnē'),
+        title: const Text('缪萨克斯集市'),
         actions: [
           IconButton(
             icon: const Icon(Icons.person_outline),

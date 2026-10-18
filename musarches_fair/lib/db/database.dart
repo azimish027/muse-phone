@@ -23,7 +23,7 @@ class AppDatabase {
 
   Future<Database> _open() async {
     final dir = await getApplicationDocumentsDirectory();
-    final path = p.join(dir.path, 'muse_phone.db');
+    final path = p.join(dir.path, 'musarches_fair.db');
     return await openDatabase(
       path,
       version: _schemaVersion,

@@ -1,4 +1,4 @@
-/// 语缪 Musē Phōnē — Android App 入口
+/// 缪萨克斯集市 Musarches Fair — Android App 入口
 ///
 /// 架构：
 ///   - Flutter 主框架（Material 3）
@@ -29,7 +29,7 @@ class MusePhoneApp extends StatelessWidget {
     return Provider<AppDatabase>(
       create: (_) => AppDatabase.instance,
       child: MaterialApp(
-        title: '语缪 · Musē Phōnē',
+        title: '缪萨克斯集市',
         debugShowCheckedModeBanner: false,
         theme: buildMuseTheme(),
         home: const SplashBridge(),
