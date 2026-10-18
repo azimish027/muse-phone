@@ -749,8 +749,9 @@
       const out = await api('/api/auth/' + authMode, 'POST', payload);
       setToken(out.token);
       state.user = out.user;
+      const onboarded = out.user?.profile?.onboarded ?? false;
       toast(authMode === 'login' ? `欢迎回来，${out.user.nickname}` : '注册成功，开始你的语言之旅！', 'ok');
-      navigate(out.user.profile.onboarded ? '#/home' : '#/onboarding');
+      navigate(onboarded ? '#/home' : '#/onboarding');
     } catch (e) {
       errBox.textContent = e.message;
       btn.disabled = false;
@@ -3394,11 +3395,12 @@
 
     if (!state.user) { renderAuth(); return; }
 
-    if (!state.user.profile.onboarded && route.name !== 'onboarding') {
+    const uOnboarded = state.user?.profile?.onboarded ?? false;
+    if (!uOnboarded && route.name !== 'onboarding') {
       navigate('#/onboarding');
       return;
     }
-    if (route.name === 'onboarding' && state.user.profile.onboarded) {
+    if (route.name === 'onboarding' && uOnboarded) {
       // 允许主动重进引导页
     }
 
