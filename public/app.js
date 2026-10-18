@@ -518,57 +518,135 @@
   function renderAuth() {
     app.innerHTML = `
       <div class="auth-wrap">
+
+        <!-- ========== 左栏：Hero + Feature Grid + Stats ========== -->
         <section class="auth-hero">
-          <!-- 品牌太阳 Logo -->
-          <svg class="brand-sun-logo" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="28" fill="none" stroke="#C45A3B" stroke-width="5"/>
-            <circle cx="50" cy="50" r="17" fill="none" stroke="#9B7B9F" stroke-width="3"/>
-            <path d="M 40 47 Q 50 53 60 47" fill="none" stroke="#C45A3B" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M 40 53 Q 50 47 60 53" fill="none" stroke="#9B7B9F" stroke-width="2.5" stroke-linecap="round"/>
-            <g stroke="#C45A3B" stroke-width="3.5" stroke-linecap="butt">
-              <line x1="50" y1="8"  x2="50" y2="16"/>
-              <line x1="50" y1="84" x2="50" y2="92"/>
-              <line x1="8"  y1="50" x2="16" y2="50"/>
-              <line x1="84" y1="50" x2="92" y2="50"/>
-            </g>
-          </svg>
-          <h1 class="brand-name">语缪 <em>Musē Phōnē</em></h1>
-          <p class="brand-sub">缪 斯 的 语 言 集 市</p>
-          <p class="hero-slogan">进来逛逛，挑趁手的工具 ✨</p>
-          <ul class="hero-points">
-            <li><span class="ico">🏹</span><div><b>Hunter Quest</b><br/>念英语咒语 · 击败小妖怪</div></li>
-            <li><span class="ico">⏳</span><div><b>时之砂刻</b><br/>日周双视图 · 落砂成羽之刻</div></li>
-            <li><span class="ico">🌌</span><div><b>星空梦想乡</b><br/>星球陪伴你的心流冥想</div></li>
-            <li><span class="ico">📚</span><div><b>分级课程</b><br/>A1 → B1 · 每节课 5 分钟</div></li>
-          </ul>
-          <div class="lang-pills">
-            <button data-lang="en" class="lang-pill ${authLang==='en'?'on':''}">🇬🇧 英语</button>
-            <button data-lang="ja" class="lang-pill ${authLang==='ja'?'on':''}">🇯🇵 日语</button>
-            <button data-lang="ko" class="lang-pill ${authLang==='ko'?'on':''}">🇰🇷 韩语</button>
+          <!-- 装饰：角落的太阳光晕圆圈 -->
+          <div class="auth-deco auth-deco-sun"></div>
+          <div class="auth-deco auth-deco-ring"></div>
+          <div class="auth-deco auth-deco-line"></div>
+
+          <!-- 顶部小标签 -->
+          <div class="auth-topbar">
+            <svg class="brand-sun-logo" viewBox="0 0 100 100" width="28" height="28">
+              <circle cx="50" cy="50" r="28" fill="none" stroke="#C45A3B" stroke-width="5"/>
+              <circle cx="50" cy="50" r="17" fill="none" stroke="#9B7B9F" stroke-width="3"/>
+              <g stroke="#C45A3B" stroke-width="3.5" stroke-linecap="butt">
+                <line x1="50" y1="8"  x2="50" y2="16"/>
+                <line x1="50" y1="84" x2="50" y2="92"/>
+                <line x1="8"  y1="50" x2="16" y2="50"/>
+                <line x1="84" y1="50" x2="92" y2="50"/>
+              </g>
+            </svg>
+            <span class="brand-chip">忒拉蓬 Therapōn Musarches</span>
+            <span class="brand-dot">·</span>
+            <span class="brand-chip-sub">By azimish</span>
           </div>
-          <p class="hero-social">🔥 <b>${state.social?.learners || 2847}</b> 人正在逛集市 · 今日新加入 <b>${state.social?.new_today || 126}</b></p>
+
+          <!-- 大 Hero 标题区 -->
+          <div class="auth-hero-body">
+            <p class="hero-kicker">缪 斯 的 语 言 集 市</p>
+            <h1 class="brand-name">缪萨克斯<span class="brand-name-accent">集市</span><em>Musarches Fair</em></h1>
+            <p class="hero-slogan">在一个铺子里，逛完语言学习的全部工具</p>
+            <p class="hero-sublog">从分级课程到咒语游戏，从时间管理到心流冥想 — 它们共用同一个账户、同一个进度、同一个你。</p>
+
+            <!-- 语言选择 pill -->
+            <div class="lang-pills">
+              <span class="lang-pills-label">选一门开始：</span>
+              <button data-lang="en" class="lang-pill ${authLang==='en'?'on':''}">🇬🇧 English</button>
+              <button data-lang="ja" class="lang-pill ${authLang==='ja'?'on':''}">🇯🇵 日本語</button>
+              <button data-lang="ko" class="lang-pill ${authLang==='ko'?'on':''}">🇰🇷 한국어</button>
+            </div>
+          </div>
+
+          <!-- 复古分隔线 -->
+          <div class="auth-divider"><span></span><svg viewBox="0 0 60 12" width="48"><path d="M0 6 L52 6 M48 3 L54 6 L48 9" stroke="#C45A3B" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span></span></div>
+
+          <!-- Feature Grid（4 个卖点） -->
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-ico">📘</div>
+              <div class="feature-name">分级课程</div>
+              <div class="feature-sub">A1 → B1 · 每节课 5 分钟</div>
+              <div class="feature-why">从入门到进阶，每一步都有明确目标，学完能立刻开口。</div>
+            </div>
+            <div class="feature-card">
+              <div class="feature-ico">🏹</div>
+              <div class="feature-name">猎语征途</div>
+              <div class="feature-sub">念英语咒语 · 击败小妖怪</div>
+              <div class="feature-why">学英语的最大敌人是无聊 — 把短语变成魔法，把句子变成武器。</div>
+            </div>
+            <div class="feature-card">
+              <div class="feature-ico">⏳</div>
+              <div class="feature-name">时之砂刻</div>
+              <div class="feature-sub">日周双视图 · 落砂成羽之刻</div>
+              <div class="feature-why">一眼看清时间去哪了，把每一天都变成可测量的修行。</div>
+            </div>
+            <div class="feature-card">
+              <div class="feature-ico">🌌</div>
+              <div class="feature-name">星空梦想乡</div>
+              <div class="feature-sub">星球陪伴你的心流冥想</div>
+              <div class="feature-why">让大脑降温。不只是语言工具 — 是你照顾自己的地方。</div>
+            </div>
+          </div>
+
+          <!-- Stats Strip（社会证明） -->
+          <div class="stats-strip">
+            <div class="stat-cell">
+              <div class="stat-num">${state.social?.learners || 2847}</div>
+              <div class="stat-label">正在逛集市的人</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-cell">
+              <div class="stat-num">${state.social?.new_today || 126}</div>
+              <div class="stat-label">今天新加入</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-cell">
+              <div class="stat-num">3</div>
+              <div class="stat-label">语言 · 完整课程</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-cell">
+              <div class="stat-num">∞</div>
+              <div class="stat-label">免费 · 不追踪 · 不卖</div>
+            </div>
+          </div>
+
+          <!-- 底部链接 -->
           <div class="hero-footer-links">
-            <a data-action="about">忒拉蓬 Therapōn Musarches · 关于</a>
-            <span>·</span>
-            <a data-action="privacy">隐私</a>
-            <span>·</span>
+            <a data-action="about">🏛️ 忒拉蓬 · 关于</a>
+            <span class="hf-dot">·</span>
+            <a data-action="privacy">🔒 隐私</a>
+            <span class="hf-dot">·</span>
             <a data-action="azimish">By azimish</a>
           </div>
         </section>
+
+        <!-- ========== 右栏：登录 / 注册 ========== -->
         <section class="auth-panel">
           <div class="auth-card">
+            <div class="auth-card-head">
+              <div class="auth-card-title">进入集市</div>
+              <div class="auth-card-sub">已有账号？登录继续。没有？30 秒创建。</div>
+            </div>
             <div class="auth-tabs">
               <button data-mode="login" class="${authMode === 'login' ? 'on' : ''}">登录</button>
               <button data-mode="register" class="${authMode === 'register' ? 'on' : ''}">注册</button>
             </div>
             <div id="auth-fields"></div>
             <div class="form-error" id="auth-error"></div>
-            <button class="btn btn-primary btn-block btn-lg" id="auth-submit">
-              ${authMode === 'login' ? '进入学习空间' : '创建账号并开始学习'}
+            <button class="btn btn-primary btn-block btn-lg auth-submit-btn" id="auth-submit">
+              ${authMode === 'login' ? '立刻开始学习 →' : '创建账号并开始 →'}
             </button>
-            <p class="form-hint">演示账号：<b>linxiaoyu@example.com</b> / <b>demo1234</b></p>
+            <div class="auth-or-line"><span>或</span></div>
+            <p class="form-hint">演示账号：<b>linxiaoyu@example.com</b> / <b>demo1234</b> · 直接体验</p>
+          </div>
+          <div class="auth-panel-foot">
+            缪萨克斯集市 Musarches Fair · 忒拉蓬出品 · © ${new Date().getFullYear()}
           </div>
         </section>
+
       </div>`;
 
     renderAuthFields();
