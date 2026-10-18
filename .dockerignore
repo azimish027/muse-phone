@@ -1,0 +1,16 @@
+.dockerignore
+.git
+.gitignore
+.github
+.env
+node_modules
+data
+screenshots
+scripts/build.js.bak
+*.tar.gz
+*.zip
+timeblock_app
+public/timeblock_app
+public/time/assets/index-*.js.map
+public/rpg/assets/*.map
+public/mind/assets/*.map

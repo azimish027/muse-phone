@@ -1,0 +1,51 @@
+# env
+.env
+
+# 数据库
+data/
+*.db
+*.db-*
+
+# deps
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# build 产物（旧的 hash 文件可以忽略，保留 latest）
+public/app.min.*.js
+public/styles.min.*.css
+
+# IDE
+.vscode/
+.idea/
+
+# === 敏感：数据库（含用户密码 hash）===
+data/
+*.db
+*.db-shm
+*.db-wal
+
+# === 敏感：子应用源码目录（public/ 下放构建产物，timeblock_app 是源码）===
+timeblock_app/
+lingua-magic-source.*
+
+# === 个人 token ===
+.env
+.env.local
+
+# === screenshots / build ===
+screenshots/
+public/*.min.*.js
+public/*.min.*.css
+
+# === 绝对敏感：原始源码上传包 ===
+.uploads/
+
+# === 大文件（git LFS 才能推，或干脆不推）===
+*.zip
+*.tar.gz
+
+# === 运行时日志 ===
+*.log
