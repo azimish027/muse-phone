@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brand Core · 缪萨克斯集市 / 忒拉蓬 Therapōn Musarches</title>
+<link rel="icon" href="/assets/brand/favicon.ico" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #F5EFE6; color: #333; font-family: -apple-system, "Segoe UI", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 48px 32px 120px; }
+
+  /* ---- Hero ---- */
+  .hero { text-align: center; padding: 48px 0 64px; border-bottom: 1px dashed #C45A3B; }
+  .hero img { width: 240px; height: 240px; }
+  .hero h1 { font-size: 42px; font-weight: 800; margin-top: 16px; color: #2B2B2B; letter-spacing: 3px; }
+  .hero h2 { font-size: 20px; color: #9B7B9F; margin-top: 4px; letter-spacing: 8px; font-weight: 400; }
+  .hero .tag { display: inline-block; margin-top: 20px; padding: 4px 14px; border: 1px solid #C45A3B; color: #C45A3B; font-size: 12px; letter-spacing: 2px; border-radius: 2px; }
+
+  /* ---- Section ---- */
+  section { padding: 40px 0; border-bottom: 1px solid #E8DDD0; }
+  section:last-child { border-bottom: none; }
+  h3 { font-size: 24px; margin-bottom: 20px; color: #C45A3B; display: flex; align-items: center; gap: 10px; }
+  h3::before { content: ""; display: inline-block; width: 18px; height: 18px; border: 3px solid #C45A3B; transform: rotate(45deg); }
+  h4 { font-size: 16px; margin: 20px 0 8px; color: #5D5D5D; }
+  p  { line-height: 1.8; color: #4A4A4A; }
+  .em { font-family: Georgia, serif; font-style: italic; color: #9B7B9F; }
+  blockquote { border-left: 3px solid #C45A3B; padding: 4px 16px; margin: 12px 0; background: #FDF9F3; font-family: Georgia, serif; color: #5D5D5D; }
+
+  /* ---- Name grid ---- */
+  .name-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+  .name-card { background: #fff; padding: 20px; border: 1px solid #E8DDD0; }
+  .name-card .label { font-size: 11px; letter-spacing: 2px; color: #9B7B9F; margin-bottom: 6px; }
+  .name-card .cn   { font-size: 22px; font-weight: 700; }
+  .name-card .en   { font-size: 15px; color: #7A7A7A; font-family: Georgia, serif; margin-top: 2px; }
+  .name-card .orig { font-size: 13px; color: #C45A3B; font-family: Georgia, serif; margin-top: 4px; }
+
+  /* ---- Logo variations ---- */
+  .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+  .logo-var { background: #fff; border: 1px solid #E8DDD0; padding: 20px; text-align: center; }
+  .logo-var.alt { background: #2B2B2B; border-color: #444; }
+  .logo-var img { max-width: 100%; height: 80px; object-fit: contain; }
+  .logo-var .label { font-size: 11px; color: #9B7B9F; margin-top: 10px; letter-spacing: 1px; }
+
+  /* ---- Anatomy ---- */
+  .anatomy { display: grid; grid-template-columns: 260px 1fr; gap: 32px; margin-top: 16px; align-items: start; }
+  .anatomy img { width: 100%; background: #fff; padding: 16px; border: 1px solid #E8DDD0; }
+  .anatomy ul { list-style: none; }
+  .anatomy li { padding: 10px 0; border-bottom: 1px dashed #E8DDD0; }
+  .anatomy li:last-child { border-bottom: none; }
+  .anatomy li .part { font-weight: 700; color: #C45A3B; }
+  .anatomy li .desc { color: #5D5D5D; margin-left: 10px; }
+
+  /* ---- Colors ---- */
+  .colors { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 16px; }
+  .color { text-align: center; }
+  .swatch { height: 72px; border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; }
+  .swatch.win-blue    { background: #000080; }
+  .swatch.win-blue-lt { background: #1084D0; }
+  .swatch.sun-red     { background: #C45A3B; }
+  .swatch.sun-purple  { background: #9B7B9F; }
+  .swatch.parchment   { background: #F5EFE6; }
+  .color .hex  { font-family: monospace; font-size: 12px; color: #777; margin-top: 6px; }
+  .color .name { font-size: 12px; color: #333; font-weight: 600; margin-top: 2px; }
+
+  /* ---- Download ---- */
+  .dl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+  .dl-btn { display: block; text-align: center; padding: 14px; background: #fff; border: 1px solid #C45A3B; color: #C45A3B; text-decoration: none; font-size: 13px; transition: all .15s; }
+  .dl-btn:hover { background: #C45A3B; color: #fff; }
+  .dl-btn .sz { font-size: 11px; color: #9B7B9F; display: block; margin-top: 2px; }
+  .dl-btn:hover .sz { color: #F5EFE6; }
+
+  /* ---- Type ---- */
+  .type-samples { margin-top: 16px; background: #fff; padding: 24px; border: 1px solid #E8DDD0; }
+  .type-samples .head { font-family: Georgia, serif; font-size: 48px; font-weight: 700; color: #2B2B2B; }
+  .type-samples .sub  { font-family: Georgia, serif; font-size: 24px; font-style: italic; color: #9B7B9F; margin-top: 4px; }
+  .type-samples .body { font-family: -apple-system, "Hiragino Sans GB", "Microsoft YaHei", sans-serif; font-size: 16px; color: #4A4A4A; margin-top: 20px; line-height: 1.8; }
+  .type-samples .mono { font-family: "Courier New", monospace; font-size: 14px; color: #777; margin-top: 10px; }
+
+  /* ---- Footer ---- */
+  .foot { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px dashed #C45A3B; color: #9B7B9F; font-size: 13px; letter-spacing: 2px; }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 32px 20px; }
+    .name-grid, .logo-grid, .colors, .dl-grid { grid-template-columns: 1fr 1fr; }
+    .anatomy { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============================================================ -->
+  <!-- HERO -->
+  <!-- ============================================================ -->
+  <div class="hero">
+    <img src="/assets/brand/logo-muse-phone.svg" alt="缪萨克斯集市 Logo" />
+    <h1>缪萨克斯集市</h1>
+    <h2>MUSARCHES · FAIR</h2>
+    <span class="tag">BRAND CORE DEFINITION · v1.0</span>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 1. 品牌三层命名 -->
+  <!-- ============================================================ -->
+  <section>
+    <h3>01 · 品牌三层命名体系</h3>
+    <p>忒拉蓬出品的语言学习产品，从工作室到技术内核，三层希腊语命名体系：</p>
+
+    <div class="name-grid">
+      <div class="name-card">
+        <div class="label">① 工作室 · Studio</div>
+        <div class="cn">忒拉蓬</div>
+        <div class="en">Therapōn Musarches</div>
+        <div class="orig">Greek · Θεράπων Μουσάρχης</div>
+      </div>
+      <div class="name-card">
+        <div class="label">② 产品 · Product</div>
+        <div class="cn">缪萨克斯集市</div>
+        <div class="en">Musarches Fair</div>
+        <div class="orig">Musarches = 缪斯 + 集市 (ἀγορά)</div>
+      </div>
+      <div class="name-card">
+        <div class="label">③ 技术内核 · Engine</div>
+        <div class="cn">语缪</div>
+        <div class="en">Musē Phōnē</div>
+        <div class="orig">Greek · Μοῦσα + Φωνή</div>
+      </div>
+      <div class="name-card">
+        <div class="label">④ 作者 · Creator</div>
+        <div class="cn">azimish</div>
+        <div class="en">@azimish027</div>
+        <div class="orig">GitHub · github.com/azimish027</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 2. 品牌释义 -->
+  <!-- ============================================================ -->
+  <section>
+    <h3>02 · 品牌释义 Brand Essence</h3>
+
+    <blockquote>
+      缪斯的大祭司侍从团 —— 不是造机器，是搭一个让缪斯愿意驻留的帐篷。
+    </blockquote>
+
+    <h4>工作室名 · 忒拉蓬 Therapōn Musarches</h4>
+    <p>
+      <em>Therapōn</em>（Θεράπων）= 侍从 / 大祭司的随从。<br/>
+      <em>Musarches</em>（Μουσάρχης）= 缪斯的领袖 / 掌管缪斯的人。<br/>
+      合起来的意象：<b>缪斯的大祭司侍从团</b> —— 我们是一帮伺候缪斯的人，
+      工具只是手段，真正要做的是让缪斯愿意来、愿意唱歌、愿意被倾听。
+    </p>
+
+    <h4>产品名 · 缪萨克斯集市 Musarches Fair</h4>
+    <p>
+      <em>Mus-</em> 来自缪斯（Μοῦσα），<em>-arches</em> 来自 ἀγορά（集市 / 广场）。<br/>
+      为什么是集市？因为语言学习不该是一间孤零的教室，它应该像一个<b>摊点铺开、人声熙攘</b>的广场 ——
+      你可以这个摊位听日语歌，那个摊位做法语游戏，另一个摊位读德语诗。
+    </p>
+
+    <h4>技术名 · 语缪 Musē Phōnē</h4>
+    <p>
+      <em>Musē</em>（Μοῦσα）= 缪斯，<em>Phōnē</em>（Φωνή）= 声音 / 语言 / 音调。<br/>
+      我们的技术内核 —— 让语言像缪斯的歌声一样被你听到。
+      不是应试教育里的"语言知识"，而是<b>有温度的、能触动你的声音</b>。
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. Logo 拆解 -->
+  <!-- ============================================================ -->
+  <section>
+    <h3>03 · Logo 拆解 Logo Anatomy</h3>
+
+    <div class="anatomy">
+      <img src="/assets/brand/logo-muse-phone.svg" alt="Logo" />
+      <ul>
+        <li>
+          <span class="part">① 日轮射线</span>
+          <span class="desc">8 根粗短硬的射线，昭和几何风。象征语言的多方向、多维度辐射。</span>
+        </li>
+        <li>
+          <span class="part">② 外圆 日轮</span>
+          <span class="desc">#C45A3B 粗描边，太阳本体。中心不变，四周发散 —— 学习的内核。</span>
+        </li>
+        <li>
+          <span class="part">③ 内圆 粉紫环</span>
+          <span class="desc">#9B7B9F 细描边。日轮里再嵌一层 —— 缪斯的声音比太阳更靠近。</span>
+        </li>
+        <li>
+          <span class="part">④ 说话口型</span>
+          <span class="desc">上下两个半圆弧交错，中间金色小点。这就是 Phōnē —— 语言正在被说出来。</span>
+        </li>
+        <li>
+          <span class="part">⑤ 四角邮戳点</span>
+          <span class="desc">老式邮票/邮戳的四角圆点。集市的"摊子感"、昭和质感的来源。</span>
+        </li>
+        <li>
+          <span class="part">⑥ Musē Phōnē 字</span>
+          <span class="desc">Georgia serif 手写感衬线 + Hiragino 细体"语缪"二字。庄重而温柔。</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 4. Logo 变体 -->
+  <!-- ============================================================ -->
+  <section>
+    <h3>04 · Logo 变体 Logo Variations</h3>
+    <div class="logo-grid">
+      <div class="logo-var"><img src="/assets/brand/logo-muse-phone.svg" /><div class="label">A. 透明矢量 SVG</div></div>
+      <div class="logo-var"><img src="/assets/brand/logo-muse-phone-solid.svg" /><div class="label">B. 羊皮纸底 SVG</div></div>
+      <div class="logo-var"><img src="/assets/brand/logo-muse-phone-mono.svg" /><div class="label">C. 单色黑 SVG (print)</div></div>
+      <div class="logo-var alt"><img src="/assets/brand/logo-muse-phone.svg" /><div class="label">D. 深色底使用</div></div>
+      <div class="logo-var"><img src="/assets/brand/logo-1024px.png" /><div class="label">E. 1024px PNG (App 图标)</div></div>
+      <div class="logo-var"><img src="/assets/brand/logo-64px.png" /><div class="label">F. 64px PNG (favicon)</div></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 5. 色板 -->
+  <!-- ============================================================ -->
+  <section>
+    <h3>05 · 品牌色板 Color Palette</h3>
+    <div class="colors">
+      <div class="color"><div class="swatch sun-red"></div><div class="hex">#C45A3B</div><div class="name">日轮红</div></div>
+      <div class="color"><div class="swatch sun-purple"></div><div class="hex">#9B7B9F</div><div class="name">缪斯紫</div></div>
+      <div class="color"><div class="swatch parchment"></div><div class="hex">#F5EFE6</div><div class="name">羊皮纸</div></div>
+      <div class="color"><div class="swatch win-blue"></div><div class="hex">#000080</div><div class="name">Win98 深蓝</div></div>
+      <div class="color"><div class="swatch win-blue-lt"></div><div class="hex">#1084D0</div><div class="name">Win98 浅蓝</div></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6. 字体 -->
+  <!-- ============================================================ -->
+  <section>
+    <h3>06 · 字体 Typography</h3>
+    <div class="type-samples">
+      <div class="head">Musē Phōnē</div>
+      <div class="sub">— 缪斯的声音</div>
+      <div class="body">
+        正文：Hiragino Sans GB / Microsoft YaHei / -apple-system<br/>
+        标题衬线：Georgia / Times New Roman<br/>
+        技术说明：Courier New monospace
+      </div>
+      <div class="mono">Win98 UI: Tahoma 11px, button font 12px, taskbar 11px</div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 7. 下载 -->
+  <!-- ============================================================ -->
+  <section>
+    <h3>07 · 下载 Asset Kit</h3>
+    <p>所有资源放在 <code>/assets/brand/</code>，直接点链接下载：</p>
+    <div class="dl-grid" style="margin-top:16px">
+      <a class="dl-btn" href="/assets/brand/logo-muse-phone.svg">LOGO · SVG<div class="sz">透明矢量 · 原始尺寸</div></a>
+      <a class="dl-btn" href="/assets/brand/logo-muse-phone-mono.svg">LOGO · MONO<div class="sz">单色黑 · 打印专用</div></a>
+      <a class="dl-btn" href="/assets/brand/logo-1024px.png">LOGO · 1024px<div class="sz">App 图标源文件</div></a>
+      <a class="dl-btn" href="/assets/brand/logo-512px.png">LOGO · 512px<div class="sz">PWA / Android</div></a>
+      <a class="dl-btn" href="/assets/brand/logo-192px.png">LOGO · 192px<div class="sz">Android 桌面</div></a>
+      <a class="dl-btn" href="/assets/brand/logo-180px.png">LOGO · 180px<div class="sz">iOS 主屏 (touch-icon)</div></a>
+      <a class="dl-btn" href="/assets/brand/favicon.ico">FAVICON .ICO<div class="sz">浏览器标签</div></a>
+      <a class="dl-btn" href="/assets/brand/logo-64px.png">LOGO · 64px<div class="sz">favicon PNG</div></a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <div class="foot">
+    忒拉蓬 Therapōn Musarches · 缪萨克斯集市 Musarches Fair · By azimish<br/>
+    Brand Core Definition · v1.0 · 2026-10-19
+  </div>
+
+</div>
+</body>
+</html>

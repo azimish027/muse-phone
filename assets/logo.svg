@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- 羊皮纸底色 -->
+  <rect width="600" height="600" fill="#F5EFE6"/>
+  
+  <!-- 8根日轮射线（粗、短、硬，昭和几何） -->
+  <g stroke="#C45A3B" stroke-width="12" stroke-linecap="butt">
+    <line x1="300" y1="60" x2="300" y2="95"/>
+    <line x1="300" y1="505" x2="300" y2="540"/>
+    <line x1="60" y1="300" x2="95" y2="300"/>
+    <line x1="505" y1="300" x2="540" y2="300"/>
+    <line x1="100" y1="100" x2="125" y2="125"/>
+    <line x1="475" y1="475" x2="500" y2="500"/>
+    <line x1="500" y1="100" x2="475" y2="125"/>
+    <line x1="125" y1="475" x2="100" y2="500"/>
+  </g>
+  
+  <!-- 外圆（日轮），粗描边 -->
+  <circle cx="300" cy="300" r="175" fill="none" stroke="#C45A3B" stroke-width="10"/>
+  
+  <!-- 内圆（粉紫），细描边 -->
+  <circle cx="300" cy="300" r="120" fill="none" stroke="#9B7B9F" stroke-width="4"/>
+  
+  <!-- 说话口型：上下两个半圆弧 + 中间小点（语言 φōnē） -->
+  <path d="M 240 280 Q 300 320 360 280" fill="none" stroke="#C45A3B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 240 320 Q 300 280 360 320" fill="none" stroke="#9B7B9F" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="300" cy="300" r="6" fill="#D4A24A"/>
+  
+  <!-- 底部品牌字：Musē Phōnē（衬线手写感） -->
+  <text x="300" y="480" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="600" fill="#5D5D5D" letter-spacing="2">Musē Phōnē</text>
+  <text x="300" y="510" text-anchor="middle" font-family="'Hiragino Serif', Georgia, serif" font-size="18" fill="#9B7B9F" letter-spacing="6">语 缪</text>
+  
+  <!-- 邮戳感：四角小圆点 -->
+  <g fill="#C45A3B">
+    <circle cx="50" cy="50" r="6"/>
+    <circle cx="550" cy="50" r="6"/>
+    <circle cx="50" cy="550" r="6"/>
+    <circle cx="550" cy="550" r="6"/>
+  </g>
+</svg>

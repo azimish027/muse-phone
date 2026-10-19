@@ -1,0 +1,24 @@
+{
+  "name": "缪萨克斯集市",
+  "short_name": "缪萨克斯",
+  "description": "缪萨克斯集市 · 缪斯的语言工具集市 — 让语言像追剧一样上瘾",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#C0C0C0",
+  "theme_color": "#000080",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "/assets/icon-96.png",  "sizes": "96x96",   "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "进入集市",   "url": "./#/" },
+    { "name": "学语言",     "url": "./#/lingua" },
+    { "name": "完整课程",   "url": "./#/courses" },
+    { "name": "关于",       "url": "./#/about" }
+  ]
+}

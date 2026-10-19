@@ -70,3 +70,5 @@ package-lock.json
 
 # ---- sharp 本地依赖 ----
 node_modules/sharp/
+# public 目录已复制到根，不再需要单独跟踪
+public/
