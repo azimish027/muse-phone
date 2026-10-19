@@ -13,26 +13,37 @@
 <link rel="apple-touch-icon" href="/assets/icon-180.png" />
 <link rel="icon" href="/assets/icon-96.png" type="image/png" />
 
-<!-- ⚡ 同步 SW 清理 + 两阶段自救方案 -->
+<!-- ⚡ 同步 SW 清理（正确 Promise 写法）-->
 <script>
 (function(){
   if (!('serviceWorker' in navigator)) return;
   var hadController = !!navigator.serviceWorker.controller;
-  var firstTry = !location.search.includes('swcleaned=1');
+  var isRetry = location.search.indexOf('swcleaned=') !== -1;
 
-  // 1. 立刻 unregister 所有 SW
-  navigator.serviceWorker.getRegistrations().forEach(function(r) { r.unregister(); });
-  // 2. 清所有 Cache Storage
-  try { caches.keys().then(function(keys) { keys.forEach(function(k){ caches.delete(k); }); }); } catch(e) {}
+  Promise.resolve(navigator.serviceWorker.getRegistrations())
+    .then(function(regs) {
+      if (regs && regs.length) {
+        regs.forEach(function(r) { try { r.unregister(); } catch(e){} });
+        console.log('🧹 已 unregister', regs.length, '个旧 SW');
+      }
+    })
+    .catch(function(e) { console.warn('SW 清理出错:', e); });
 
-  // 3. 如果有旧 SW 在控制 且 还没清过 → 刷新一次让新页面不受拦截
-  if (hadController && firstTry) {
-    console.log('🧹 发现旧 SW 在控制，刷新一次...');
-    // 不要 location.reload() —— 旧 SW 还会拦截
-    // 用全新 URL 彻底绕过
-    setTimeout(function(){
+  Promise.resolve(caches && caches.keys && caches.keys())
+    .then(function(keys) {
+      if (keys && keys.length) {
+        keys.forEach(function(k) { try { caches.delete(k); } catch(e){} });
+        console.log('🧹 已清', keys.length, '个旧缓存');
+      }
+    })
+    .catch(function(e) { /* ignore */ });
+
+  // 旧 SW 在控制 + 第一次 → 刷新让新页面不受拦截
+  if (hadController && !isRetry) {
+    console.log('🔄 旧 SW 在控制，150ms 后刷新...');
+    setTimeout(function() {
       location.replace(location.pathname + '?swcleaned=1&t=' + Date.now());
-    }, 100);
+    }, 150);
   }
 })();
 </script>
