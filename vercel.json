@@ -1,4 +1,6 @@
 {
+  "version": 2,
+  "root": "public",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
