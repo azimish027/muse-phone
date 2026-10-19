@@ -54,16 +54,83 @@
 
   // ====== 静态部署模式 Mock 数据（后端没跑时自动启用）======
   const MOCK_USER = {
-    user: {
-      id: 'demo-001',
-      email: 'demo@musarches.local',
-      username: '缪斯旅人',
-      profile: { onboarded: true, lang: 'zh-CN', avatar: '', bio: '欢迎来到缪萨克斯集市！' },
-      xp: 1280, level: 5, streak: 7,
-      stats: { levelProgress: 0.35, todayMinutes: 45, totalMinutes: 1280, streakDays: 7 },
-    }
+    id: 'demo-001',
+    email: 'demo@musarches.local',
+    nickname: '缪斯旅人',
+    username: '缪斯旅人',
+    created_at: '2024-09-15T08:00:00Z',
+    xp: 1280,
+    level: 5,
+    streak: 7,
+    profile: {
+      onboarded: true,
+      lang: 'zh-CN',
+      avatar: '',
+      bio: '欢迎来到缪萨克斯集市！',
+      target_langs: ['en', 'ja'],
+      placement: 'B1',
+      daily_goal_min: 30,
+    },
+    achievements: [
+      { id: 'first', name: '初次启航' },
+      { id: 'streak7', name: '一周连学' },
+      { id: 'xp1k', name: '千 XP 旅人' },
+    ],
+    stats: {
+      level: 5,
+      levelTitle: '星光',
+      xp: 1280,
+      streak: 7,
+      nextLevelXp: 1600,
+      levelProgress: 0.35,
+      total_minutes: 1280,
+      todayMinutes: 45,
+    },
   };
-  const STATIC_MOCK_ENDPOINTS = new Set(['/api/auth/me', '/api/path/today', '/api/progress/overview', '/api/courses', '/api/achievements', '/api/profile']);
+
+  const MOCK_PROGRESS_OVERVIEW = {
+    stats: {
+      level: 5,
+      levelTitle: '星光',
+      xp: 1280,
+      streak: 7,
+      nextLevelXp: 1600,
+      levelProgress: 0.35,
+      total_minutes: 1280,
+      todayMinutes: 45,
+    },
+    totals: {
+      lessonsCompleted: 42,
+      wordsTotal: 268,
+      perfect: 5,
+    },
+    languages: [
+      { code: 'en', flag: '🇬🇧', name: 'English', completed: 28, total: 60, percent: 47 },
+      { code: 'ja', flag: '🇯🇵', name: '日本語', completed: 14, total: 45, percent: 31 },
+      { code: 'ko', flag: '🇰🇷', name: '한국어', completed: 0, total: 30, percent: 0 },
+    ],
+    modules: [
+      { module: 'lesson', label: '课节学习', accuracy: 86, minutes: 520 },
+      { module: 'memory', label: '记忆库', accuracy: 72, minutes: 310 },
+      { module: 'review', label: '复习', accuracy: 91, minutes: 280 },
+      { module: 'speaking', label: '口语', accuracy: null, minutes: 170 },
+    ],
+  };
+
+  const STATIC_MOCK_ENDPOINTS = new Set(['/api/auth/me', '/api/path/today', '/api/progress/overview', '/api/courses', '/api/achievements', '/api/profile', '/api/auth/login', '/api/auth/register']);
+
+  // 根据不同端点返回不同 shape 的 mock 数据
+  function mockDataFor(path) {
+    switch (path) {
+      case '/api/profile':        return { user: MOCK_USER };
+      case '/api/auth/me':        return { user: MOCK_USER };
+      case '/api/auth/login':     return { token: 'mock-token-' + Date.now(), user: MOCK_USER };
+      case '/api/auth/register':  return { token: 'mock-token-' + Date.now(), user: MOCK_USER };
+      case '/api/progress/overview': return MOCK_PROGRESS_OVERVIEW;
+      case '/api/achievements':   return { achievements: MOCK_USER.achievements };
+      default:                    return { user: MOCK_USER };
+    }
+  }
 
   async function api(path, method = 'GET', body) {
     const headers = {};
@@ -77,9 +144,9 @@
       });
     } catch (e) {
       // 网络失败 → 看是不是 mock 过的端点
-      if (STATIC_MOCK_ENDPOINTS.has(path) && method === 'GET') {
+      if (STATIC_MOCK_ENDPOINTS.has(path)) {
         console.warn('🔌 后端不可达，启用静态 Mock:', path);
-        return MOCK_USER;
+        return mockDataFor(path);
       }
       throw new Error('网络请求失败 — 后端服务未启动');
     }
@@ -87,9 +154,9 @@
     try { data = await res.json(); } catch { /* ignore */ }
     if (!res.ok) {
       // 404 / 401 等 → mock 一下静态部署
-      if (STATIC_MOCK_ENDPOINTS.has(path) && method === 'GET') {
+      if (STATIC_MOCK_ENDPOINTS.has(path)) {
         console.warn('🔌 后端返回', res.status, '，启用静态 Mock:', path);
-        return MOCK_USER;
+        return mockDataFor(path);
       }
       if (res.status === 401) { setToken(''); state.user = null; }
       throw new Error((data && data.error) || `请求失败（${res.status}）`);
@@ -3542,14 +3609,10 @@
     // 启动时钟
     startWin98Clock();
 
-    if (!state.user) {
-      try {
-        const me = await api('/api/auth/me');
-        state.user = me.user;
-      } catch {
-        state.user = null;
-      }
-    }
+    // 直接用 Mock 用户启动 —— 静态部署模式，不走网络
+    state.user = MOCK_USER;
+    state.user.profile = state.user.profile || {};
+    state.user.profile.onboarded = true;
 
     if (!state.user) { renderAuth(); return; }
 

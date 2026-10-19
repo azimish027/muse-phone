@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- ===== Therapōn ICON · DARK · 透明底 · 无文字 ===== -->
+
+  <!-- 8 根日轮射线 -->
+  <g stroke="#E8D5B7" stroke-width="12" stroke-linecap="butt">
+    <line x1="300" y1="45"  x2="300" y2="90"/>
+    <line x1="300" y1="510" x2="300" y2="555"/>
+    <line x1="45"  y1="300" x2="90"  y2="300"/>
+    <line x1="510" y1="300" x2="555" y2="300"/>
+    <line x1="85"  y1="85"  x2="125" y2="125"/>
+    <line x1="475" y1="475" x2="515" y2="515"/>
+    <line x1="515" y1="85"  x2="475" y2="125"/>
+    <line x1="125" y1="475" x2="85"  y2="515"/>
+  </g>
+
+  <!-- 粗外圆 r=180 -->
+  <circle cx="300" cy="300" r="180" fill="none" stroke="#E8D5B7" stroke-width="12"/>
+
+  <!-- 紫环 stroke-width=7 -->
+  <circle cx="300" cy="300" r="162" fill="none" stroke="#D4A24A" stroke-width="7"/>
+
+  <!-- 金色椭圆 stroke-width=3.5 -->
+  <ellipse cx="300" cy="300" rx="132" ry="44" fill="none" stroke="#F0C776" stroke-width="3.5"/>
+
+  <!-- 同心圆吸积盘 -->
+  <circle cx="300" cy="300" r="95" fill="none" stroke="#D4A24A" stroke-width="2.5"/>
+  <circle cx="300" cy="300" r="80" fill="none" stroke="#E8D5B7" stroke-width="2"/>
+  <circle cx="300" cy="300" r="52" fill="none" stroke="#D4A24A" stroke-width="1.8"/>
+  <circle cx="300" cy="300" r="28" fill="none" stroke="#1a0e08" stroke-width="5"/>
+
+  <!-- 中心黑洞 r=24 + 装饰 -->
+  <circle cx="300" cy="300" r="24" fill="#0a0504"/>
+  <circle cx="300" cy="300" r="24" fill="none" stroke="#F0C776" stroke-width="2.5"/>
+  <circle cx="300" cy="300" r="18" fill="none" stroke="#F0C776" stroke-width="1.5"/>
+  <circle cx="300" cy="300" r="9"  fill="none" stroke="#F0C776" stroke-width="1"/>
+  <circle cx="300" cy="300" r="3"  fill="#F0C776"/>
+
+  <!-- 四角邮戳点 -->
+  <g fill="#D4A24A">
+    <circle cx="50"  cy="50"  r="6"/>
+    <circle cx="550" cy="50"  r="6"/>
+    <circle cx="50"  cy="550" r="6"/>
+    <circle cx="550" cy="550" r="6"/>
+  </g>
+</svg>

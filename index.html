@@ -95,6 +95,43 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --grad-brand: linear-gradient(135deg, #C45A3B 0%, #9B7B9F 100%);
   --grad-sun:   radial-gradient(circle at 50% 40%, #D4A24A22 0%, #C45A3B11 50%, transparent 70%);
+
+  /* ===== 缺失 token 补齐（别名 + 少量新值）===== */
+  /* 字体别名 */
+  --fs-base:    var(--fs-body);       /* 基础字号 = --fs-body 0.88rem */
+  --fs-md:      var(--fs-h2);         /* 中号标题 = 1.1rem */
+  --fs-lg:      var(--fs-h1);         /* 大号标题 = 1.4rem */
+  --fs-xl:      var(--fs-hero);       /* 特大 = clamp(...) */
+  --fs-xxs:     0.68rem;              /* 超小号（nav-label 等） */
+  /* 行高 */
+  --lh-body:    1.7;
+  /* 卡片/面板 */
+  --panel:      var(--bg-1);          /* #FFFFFF */
+  --panel-hover:var(--bg-2);          /* var(--paper-2) */
+  /* 间距 */
+  --sp-8:       40px;
+  /* 布局 */
+  --max-w:      1040px;
+  /* 按钮高度 */
+  --btn-h-sm:   28px;
+  --btn-h-md:   34px;
+  --btn-h-lg:   42px;
+  /* brand 第三档（用于 active waves 等） */
+  --brand-3:    #A8482C;
+  /* 阴影 */
+  --shadow-soft: var(--shadow-2);
+  /* 渐变补充 */
+  --grad-warm:   linear-gradient(135deg, #D4A24A 0%, #C45A3B 100%);
+  --grad-cool:   linear-gradient(135deg, #5B8FC4 0%, #3A5A84 100%);
+  --grad-teal:   linear-gradient(135deg, #6BC4B8 0%, #3E8B80 100%);
+  --grad-success:linear-gradient(135deg, #7D915C 0%, #4B6232 100%);
+  /* 评测等级色 */
+  --tier-super:  #2B1810;
+  --tier-normal: #7A5A6E;
+  --tier-weak:   #B0A295;
+  --tier-miss:   #B34A3E;
+  /* focus ring */
+  --ring:        2px solid var(--brand-soft);
 }
 
 * { box-sizing: border-box; }
@@ -104,7 +141,7 @@ body {
   font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
     system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--text);
-  background: var(background: var(--paper);
+  background: var(--paper);
   background-attachment: fixed;
   font-size: var(--fs-base);
   line-height: var(--lh-body);
@@ -2033,6 +2070,7 @@ a { color: inherit; text-decoration: none; }
   border-left: 2px solid var(--golden_wheat, #D4A24A);
   border-radius: 0 6px 6px 0;
   display: -webkit-box;
+  line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -3748,7 +3786,162 @@ body.win98 .w98-desktop-icon.selected .w98-icon-label {
 /* 给页面底部留 28px 不被任务栏盖住 */
 body.win98 #app {
   padding-bottom: 28px;
-}</style>
+}
+
+/* ============================================================
+   WIN98 桌面层 · 壁纸 + 桌面图标网格 + HIMEMIRO 入口
+   ============================================================ */
+
+/* --- 壁纸 --- */
+body.win98-desktop {
+  /* 经典 Win98 蓝天草地渐变壁纸 */
+  background: linear-gradient(
+    to bottom,
+    #5B9BD5 0%,
+    #7DBDE5 25%,
+    #A5D4ED 50%,
+    #9CC58A 62%,
+    #6B9E55 75%,
+    #4B7A38 100%
+  ) !important;
+  background-attachment: fixed !important;
+  min-height: 100vh;
+}
+
+/* 桌面容器 —— 最底层（在 #app 下、任务栏上） */
+.w98-desktop {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;  /* 让点击穿透到下面的窗口 */
+  padding: 32px 24px 40px;
+  box-sizing: border-box;
+}
+
+.w98-desktop .desktop-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  pointer-events: auto;
+  max-width: 92px;
+}
+
+/* 桌面图标 */
+.w98-desktop .desk-ico {
+  width: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.w98-desktop .desk-ico:focus { outline: none; }
+
+.w98-desktop .desk-ico .ico-box {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.w98-desktop .desk-ico .ico-box img {
+  width: 42px;
+  height: 42px;
+  image-rendering: -webkit-optimize-contrast;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #999;
+}
+
+.w98-desktop .desk-ico .ico-box .svg-ico {
+  width: 42px;
+  height: 42px;
+}
+
+/* 文字标签 */
+.w98-desktop .desk-ico .lbl {
+  font-family: "Microsoft YaHei", "Tahoma", sans-serif;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+  padding: 2px 4px;
+  max-width: 84px;
+  text-shadow: 1px 1px 0 #000;
+  word-break: break-all;
+}
+
+/* 选中态（点击后） */
+.w98-desktop .desk-ico.selected .lbl {
+  background: #000080 !important;
+  outline: 1px dotted #fff;
+  outline-offset: -1px;
+  text-shadow: none;
+  color: #fff !important;
+}
+
+.w98-desktop .desk-ico.selected .ico-box img,
+.w98-desktop .desk-ico.selected .ico-box .svg-ico {
+  filter: brightness(0.85);
+}
+
+.w98-desktop .desk-ico.selected {
+  outline: 1px dotted #000;
+  outline-offset: -2px;
+  pointer-events: auto;
+}
+
+.w98-desktop .desk-ico .lbl,
+.w98-desktop .desk-ico .ico-box {
+  pointer-events: auto;
+}
+
+/* 右键菜单 */
+.w98-desktop .ctx-menu {
+  position: fixed;
+  background: #fff;
+  border: 1px solid #333;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  padding: 2px 0;
+  font-family: "Tahoma", sans-serif;
+  font-size: 12px;
+  min-width: 140px;
+  z-index: 9999;
+}
+
+.w98-desktop .ctx-menu .item {
+  padding: 4px 16px;
+  cursor: pointer;
+}
+
+.w98-desktop .ctx-menu .item:hover {
+  background: #000080;
+  color: #fff;
+}
+
+.w98-desktop .ctx-menu .sep {
+  height: 1px;
+  background: #ccc;
+  margin: 2px 0;
+}
+
+/* --- 登录页桌面也加壁纸 --- */
+body.win98-desktop .auth-wrap {
+  background: transparent !important;
+}
+
+body.win98-desktop .auth-panel,
+body.win98-desktop .auth-hero {
+  background: rgba(240, 240, 240, 0.97) !important;
+  backdrop-filter: blur(2px);
+}
+</style>
 </head>
 <body>
   <div id="app"><div class="boot"></div></div>
@@ -3818,16 +4011,82 @@ body.win98 #app {
 
   // ====== 静态部署模式 Mock 数据（后端没跑时自动启用）======
   const MOCK_USER = {
-    user: {
-      id: 'demo-001',
-      email: 'demo@musarches.local',
-      username: '缪斯旅人',
-      profile: { onboarded: true, lang: 'zh-CN', avatar: '', bio: '欢迎来到缪萨克斯集市！' },
-      xp: 1280, level: 5, streak: 7,
-      stats: { levelProgress: 0.35, todayMinutes: 45, totalMinutes: 1280, streakDays: 7 },
-    }
+    id: 'demo-001',
+    email: 'demo@musarches.local',
+    nickname: '缪斯旅人',
+    username: '缪斯旅人',
+    created_at: '2024-09-15T08:00:00Z',
+    xp: 1280,
+    level: 5,
+    streak: 7,
+    profile: {
+      onboarded: true,
+      lang: 'zh-CN',
+      avatar: '',
+      bio: '欢迎来到缪萨克斯集市！',
+      target_langs: ['en', 'ja'],
+      placement: 'B1',
+      daily_goal_min: 30,
+    },
+    achievements: [
+      { id: 'first', name: '初次启航' },
+      { id: 'streak7', name: '一周连学' },
+      { id: 'xp1k', name: '千 XP 旅人' },
+    ],
+    stats: {
+      level: 5,
+      levelTitle: '星光',
+      xp: 1280,
+      streak: 7,
+      nextLevelXp: 1600,
+      levelProgress: 0.35,
+      total_minutes: 1280,
+      todayMinutes: 45,
+    },
   };
-  const STATIC_MOCK_ENDPOINTS = new Set(['/api/auth/me', '/api/path/today', '/api/progress/overview', '/api/courses', '/api/achievements', '/api/profile']);
+
+  const MOCK_PROGRESS_OVERVIEW = {
+    stats: {
+      level: 5,
+      levelTitle: '星光',
+      xp: 1280,
+      streak: 7,
+      nextLevelXp: 1600,
+      levelProgress: 0.35,
+      total_minutes: 1280,
+      todayMinutes: 45,
+    },
+    totals: {
+      lessonsCompleted: 42,
+      wordsTotal: 268,
+      perfect: 5,
+    },
+    languages: [
+      { code: 'en', flag: '🇬🇧', name: 'English', completed: 28, total: 60, percent: 47 },
+      { code: 'ja', flag: '🇯🇵', name: '日本語', completed: 14, total: 45, percent: 31 },
+      { code: 'ko', flag: '🇰🇷', name: '한국어', completed: 0, total: 30, percent: 0 },
+    ],
+    modules: [
+      { module: 'lesson', label: '课节学习', accuracy: 86, minutes: 520 },
+      { module: 'memory', label: '记忆库', accuracy: 72, minutes: 310 },
+      { module: 'review', label: '复习', accuracy: 91, minutes: 280 },
+      { module: 'speaking', label: '口语', accuracy: null, minutes: 170 },
+    ],
+  };
+
+  const STATIC_MOCK_ENDPOINTS = new Set(['/api/auth/me', '/api/path/today', '/api/progress/overview', '/api/courses', '/api/achievements', '/api/profile', '/api/auth/login', '/api/auth/register']);
+
+  function mockDataFor(path) {
+    switch (path) {
+      case '/api/profile':        return { user: MOCK_USER };
+      case '/api/auth/me':        return { user: MOCK_USER };
+      case '/api/auth/login':     return { token: 'mock-token-' + Date.now(), user: MOCK_USER };
+      case '/api/auth/register':  return { token: 'mock-token-' + Date.now(), user: MOCK_USER };
+      case '/api/progress/overview': return MOCK_PROGRESS_OVERVIEW;
+      case '/api/achievements':   return { achievements: MOCK_USER.achievements };
+      default:                    return { user: MOCK_USER };
+    }
+  }
 
   async function api(path, method = 'GET', body) {
     const headers = {};
@@ -3840,20 +4099,18 @@ body.win98 #app {
         method, headers, body: body === undefined ? undefined : JSON.stringify(body),
       });
     } catch (e) {
-      // 网络失败 → 看是不是 mock 过的端点
-      if (STATIC_MOCK_ENDPOINTS.has(path) && method === 'GET') {
+      if (STATIC_MOCK_ENDPOINTS.has(path)) {
         console.warn('🔌 后端不可达，启用静态 Mock:', path);
-        return MOCK_USER;
+        return mockDataFor(path);
       }
       throw new Error('网络请求失败 — 后端服务未启动');
     }
     let data = null;
     try { data = await res.json(); } catch { /* ignore */ }
     if (!res.ok) {
-      // 404 / 401 等 → mock 一下静态部署
-      if (STATIC_MOCK_ENDPOINTS.has(path) && method === 'GET') {
+      if (STATIC_MOCK_ENDPOINTS.has(path)) {
         console.warn('🔌 后端返回', res.status, '，启用静态 Mock:', path);
-        return MOCK_USER;
+        return mockDataFor(path);
       }
       if (res.status === 401) { setToken(''); state.user = null; }
       throw new Error((data && data.error) || `请求失败（${res.status}）`);
@@ -7306,14 +7563,126 @@ body.win98 #app {
     // 启动时钟
     startWin98Clock();
 
-    if (!state.user) {
-      try {
-        const me = await api('/api/auth/me');
-        state.user = me.user;
-      } catch {
-        state.user = null;
-      }
+    // 直接用 Mock 用户启动 —— 静态部署模式，不走网络
+    state.user = MOCK_USER;
+    state.user.profile = state.user.profile || {};
+    state.user.profile.onboarded = true;
+
+    // ===== WIN98 桌面层初始化 =====
+    document.body.classList.add('win98-desktop');
+
+    const DESKTOP_ICONS = [
+      { id: 'courses',  label: '📖 课程学习',   route: '#/courses',        icon: '📘', type: 'route' },
+      { id: 'review',   label: '🧠 复习记忆',   route: '#/review',         icon: '🧠', type: 'route' },
+      { id: 'quest',    label: '🏠 猎语征途',   route: '#/hunter-quest',   icon: '🏠', type: 'route' },
+      { id: 'time',     label: '⏳ 时之砂刻',   route: '#/time',           icon: '⏳', type: 'route' },
+      { id: 'rpg',      label: '✨ 星空梦想乡', route: '#/rpg',            icon: '✨', type: 'route' },
+      { id: 'profile',  label: '👤 个人中心',   route: '#/profile',        icon: '👤', type: 'route' },
+      { id: 'brand',    label: '📚 忒拉蓬出品', route: 'brand.html',      icon: '📚', type: 'href' },
+      { id: 'himemiro', label: '🔮 HIMEMIRO\n魔法梦工厂', route: 'https://himemiro.therapon.art', type: 'external', img: 'assets/desktop/himemiro-angel.png' },
+      { id: 'trash',    label: '🗑️ 回收站',   route: null,               icon: '🗑️', type: 'noop' },
+    ];
+
+    function renderDesktop() {
+      // 清除旧桌面
+      document.querySelectorAll('.w98-desktop').forEach(n => n.remove());
+
+      const desktop = document.createElement('div');
+      desktop.className = 'w98-desktop';
+
+      const grid = document.createElement('div');
+      grid.className = 'desktop-grid';
+
+      DESKTOP_ICONS.forEach(ico => {
+        const el = document.createElement('div');
+        el.className = 'desk-ico';
+        el.tabIndex = 0;
+        el.dataset.id = ico.id;
+
+        const icoBox = document.createElement('div');
+        icoBox.className = 'ico-box';
+        if (ico.img) {
+          const img = document.createElement('img');
+          img.src = ico.img;
+          img.alt = ico.label;
+          img.onerror = () => { icoBox.innerHTML = '<div class="svg-ico" style="font-size:36px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #999;">' + ico.icon + '</div>'; };
+          icoBox.appendChild(img);
+        } else {
+          icoBox.innerHTML = '<div class="svg-ico" style="font-size:36px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #999;">' + ico.icon + '</div>';
+        }
+
+        const lbl = document.createElement('div');
+        lbl.className = 'lbl';
+        lbl.textContent = ico.label;
+
+        el.appendChild(icoBox);
+        el.appendChild(lbl);
+
+        // 单击选中
+        el.addEventListener('click', (e) => {
+          document.querySelectorAll('.desk-ico.selected').forEach(n => n.classList.remove('selected'));
+          el.classList.add('selected');
+          e.stopPropagation();
+        });
+
+        // 双击/回车打开
+        const openIco = () => {
+          const selectedId = el.dataset.id;
+          const def = DESKTOP_ICONS.find(i => i.id === selectedId);
+          if (!def) return;
+          if (def.type === 'route') navigate(def.route);
+          else if (def.type === 'href') window.open(def.route, '_blank');
+          else if (def.type === 'external') window.open(def.route, '_blank');
+          else if (def.type === 'noop') alert('🗑️ 回收站是空的～');
+        };
+        el.addEventListener('dblclick', openIco);
+        el.addEventListener('keydown', (e) => { if (e.key === 'Enter') openIco(); });
+
+        grid.appendChild(el);
+      });
+
+      desktop.appendChild(grid);
+      document.body.appendChild(desktop);
+
+      // 点击空白取消选中
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.desk-ico')) {
+          document.querySelectorAll('.desk-ico.selected').forEach(n => n.classList.remove('selected'));
+          closeCtxMenu();
+        }
+      });
+
+      // 右键桌面菜单
+      desktop.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        closeCtxMenu();
+        const menu = document.createElement('div');
+        menu.className = 'ctx-menu';
+        menu.style.left = e.clientX + 'px';
+        menu.style.top  = e.clientY + 'px';
+        menu.innerHTML = `
+          <div class="item" data-act="refresh">🔄 刷新图标</div>
+          <div class="item" data-act="arrange">📐 自动排列</div>
+          <div class="sep"></div>
+          <div class="item" data-act="paste" style="opacity:.5">📋 粘贴</div>
+          <div class="sep"></div>
+          <div class="item" data-act="about">ℹ️ 属性</div>
+        `;
+        menu.querySelectorAll('.item').forEach(it => {
+          it.addEventListener('click', () => {
+            const act = it.dataset.act;
+            if (act === 'refresh') { renderDesktop(); toast('🔄 桌面刷新'); }
+            else if (act === 'arrange') toast('📐 图标已排列');
+            else if (act === 'about') toast('🖥️ 忒拉蓬 Musē Phōnē · Win98 桌面 v1.0');
+            closeCtxMenu();
+          });
+        });
+        document.body.appendChild(menu);
+      });
     }
+    function closeCtxMenu() { document.querySelectorAll('.ctx-menu').forEach(n => n.remove()); }
+
+    renderDesktop();
 
     if (!state.user) { renderAuth(); return; }
 

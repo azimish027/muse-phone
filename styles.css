@@ -76,7 +76,7 @@ body {
   font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC",
     system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--text);
-  background: var(background: var(--paper);
+  background: var(--paper);
   background-attachment: fixed;
   font-size: var(--fs-base);
   line-height: var(--lh-body);
@@ -2005,6 +2005,7 @@ a { color: inherit; text-decoration: none; }
   border-left: 2px solid var(--golden_wheat, #D4A24A);
   border-radius: 0 6px 6px 0;
   display: -webkit-box;
+  line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
