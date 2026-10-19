@@ -49,3 +49,24 @@ public/*.min.*.css
 
 # === 运行时日志 ===
 *.log
+
+# ---- Capacitor / Android native 工程（每次 sync 重建，不进 git） ----
+android/
+ios/
+capacitor.config.ts
+
+# ---- APK 构建产物 ----
+*.apk
+*.aab
+*.apks
+*.idsig
+android-build/
+
+# ---- 本地构建产物 ----
+node_modules/
+package-lock.json
+.DS_Store
+*.log
+
+# ---- sharp 本地依赖 ----
+node_modules/sharp/

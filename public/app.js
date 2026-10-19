@@ -57,14 +57,22 @@
     const token = getToken();
     if (token) headers.Authorization = 'Bearer ' + token;
     if (body !== undefined) headers['Content-Type'] = 'application/json';
-    const res = await fetch(path, {
-      method, headers, body: body === undefined ? undefined : JSON.stringify(body),
-    });
+    let res;
+    try {
+      res = await fetch(path, {
+        method, headers, body: body === undefined ? undefined : JSON.stringify(body),
+      });
+    } catch (e) {
+      throw new Error('网络请求失败 — 后端服务未启动，请稍后再试');
+    }
     let data = null;
     try { data = await res.json(); } catch { /* ignore */ }
     if (!res.ok) {
       if (res.status === 401) { setToken(''); state.user = null; }
       throw new Error((data && data.error) || `请求失败（${res.status}）`);
+    }
+    if (data == null) {
+      throw new Error('服务器未返回有效数据');
     }
     return data;
   }
@@ -590,15 +598,15 @@
             </div>
           </div>
 
-          <!-- Stats Strip（社会证明） -->
+          <!-- Stats Strip（社会证明 · 故意一眼假的数字） -->
           <div class="stats-strip">
             <div class="stat-cell">
-              <div class="stat-num">${state.social?.learners || 2847}</div>
+              <div class="stat-num">12345</div>
               <div class="stat-label">正在逛集市的人</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-cell">
-              <div class="stat-num">${state.social?.new_today || 126}</div>
+              <div class="stat-num">2222</div>
               <div class="stat-label">今天新加入</div>
             </div>
             <div class="stat-divider"></div>
@@ -3378,11 +3386,138 @@
   // （复用之前插入的 cols-3 grid，追加第 4 张卡 → 改成 cols-4）
   function _patchLinguaHomeGroup() { /* placeholder — 已在 renderLinguaHome 模板插入 */ }
 
+  /* ---------------------------------------------------------------- Win98 任务栏 / 时钟 / 开始菜单 */
+
+  function ensureWin98Taskbar() {
+    if (document.getElementById('w98-taskbar')) return;
+    const bar = document.createElement('div');
+    bar.id = 'w98-taskbar';
+    bar.className = 'w98-taskbar';
+    bar.innerHTML = `
+      <button class="w98-start-btn" id="w98-start-btn">
+        <span class="w98-flag"><span></span><span></span></span>
+        <span>开始</span>
+      </button>
+      <div class="w98-taskbar-sep"></div>
+      <div class="w98-taskbar-windows">
+        <button class="w98-task-btn active" id="w98-task-home">🏠 缪萨克斯集市</button>
+      </div>
+      <div class="w98-tray">
+        <span class="w98-tray-icon">🔊</span>
+        <span class="w98-tray-icon">📶</span>
+        <span class="w98-clock" id="w98-clock">--:--</span>
+      </div>
+    `;
+    document.body.appendChild(bar);
+
+    // 开始菜单 DOM
+    const menu = document.createElement('div');
+    menu.id = 'w98-start-menu';
+    menu.className = 'w98-start-menu';
+    menu.innerHTML = `
+      <div class="w98-start-menu-header">
+        <span class="w98-flag"></span>
+        <span>缪萨克斯集市</span>
+      </div>
+      <button class="w98-start-menu-item" data-act="home">
+        <span class="w98-icon">🏠</span><span>进入集市</span>
+      </button>
+      <button class="w98-start-menu-item" data-act="courses">
+        <span class="w98-icon">📚</span><span>完整课程</span>
+      </button>
+      <button class="w98-start-menu-item" data-act="lingua">
+        <span class="w98-icon">🎮</span><span>学语言</span>
+      </button>
+      <div class="w98-start-menu-sep"></div>
+      <button class="w98-start-menu-item" data-act="about">
+        <span class="w98-icon">ℹ️</span><span>关于忒拉蓬</span>
+      </button>
+      <button class="w98-start-menu-item" data-act="azimish">
+        <span class="w98-icon">👤</span><span>关于 azimish</span>
+      </button>
+      <div class="w98-start-menu-sep"></div>
+      <button class="w98-start-menu-item" data-act="settings">
+        <span class="w98-icon">⚙️</span><span>控制面板</span>
+      </button>
+      <button class="w98-start-menu-item" data-act="shutdown">
+        <span class="w98-icon">⏻</span><span>关闭集市…</span>
+      </button>
+    `;
+    document.body.appendChild(menu);
+
+    // 事件绑定
+    document.getElementById('w98-start-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.toggle('open');
+      document.getElementById('w98-start-btn').classList.toggle('pressed', menu.classList.contains('open'));
+    });
+    document.addEventListener('click', () => {
+      menu.classList.remove('open');
+      document.getElementById('w98-start-btn').classList.remove('pressed');
+    });
+    document.getElementById('w98-task-home').addEventListener('click', () => navigate('#/'));
+
+    menu.querySelectorAll('.w98-start-menu-item').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const act = btn.dataset.act;
+        menu.classList.remove('open');
+        document.getElementById('w98-start-btn').classList.remove('pressed');
+        switch (act) {
+          case 'home': navigate('#/'); break;
+          case 'courses': navigate('#/courses'); break;
+          case 'lingua': navigate('#/lingua'); break;
+          case 'about': navigate('#/about'); break;
+          case 'azimish': navigate('#/azimish'); break;
+          case 'settings': alert('🚫 控制面板还没做。在 Win98 里这个按钮本来也经常是空的 😄'); break;
+          case 'shutdown': if (confirm('确定要关闭缪萨克斯集市吗？')) { window.close(); setTimeout(() => { location.href = 'about:blank'; }, 300); } break;
+        }
+      });
+    });
+  }
+
+  function startWin98Clock() {
+    if (window.__w98ClockStarted) return;
+    window.__w98ClockStarted = true;
+    const tick = () => {
+      const el = document.getElementById('w98-clock');
+      if (!el) return;
+      const d = new Date();
+      const hh = String(d.getHours()).padStart(2, '0');
+      const mm = String(d.getMinutes()).padStart(2, '0');
+      el.textContent = `${hh}:${mm}`;
+    };
+    tick();
+    setInterval(tick, 30000); // 半分钟更新一次
+  }
+
   /* ---------------------------------------------------------------- 渲染入口 */
 
   async function render() {
     const route = parseRoute();
     state.route = route.name;
+
+    // === Win98 开机画面 + 任务栏 + 时钟 ===
+    // 首次进入时显示开机画面（只播一次）
+    if (!window.__w98Booted) {
+      window.__w98Booted = true;
+      const oldBoot = document.querySelector('#app > .boot');
+      if (oldBoot) oldBoot.style.display = 'none';
+      const w98boot = document.getElementById('w98-boot');
+      if (w98boot) w98boot.style.display = 'flex';
+      // 3.5s 后 CSS 动画自动淡出；2 秒后彻底移除
+      setTimeout(() => {
+        if (w98boot) { w98boot.style.display = 'none'; }
+      }, 6000);
+    }
+
+    // 默认加 Win98 皮肤（主页 + 语言学习模块）
+    document.body.classList.add('win98');
+
+    // 注入 Win98 任务栏 + 开始菜单（只注入一次）
+    ensureWin98Taskbar();
+    // 启动时钟
+    startWin98Clock();
 
     if (!state.user) {
       try {
@@ -3412,12 +3547,14 @@
       const enabledApps = (state.apps || []).filter((a) => a.enabled !== false);
       const toolApp = enabledApps.find((a) => a.id === route.name);
       if (toolApp) {
+        document.body.classList.remove('win98'); // 子应用有自己的 UI
         state.meta = { title: toolApp.name, sub: toolApp.desc };
         renderToolApp(toolApp);
         return; // 提前 return，不走 switch
       }
       // 兜底：apps.json 加载失败但用户访问 /time
       if (route.name === 'time' && (!state.apps || state.apps.length === 0)) {
+        document.body.classList.remove('win98'); // 子应用有自己的 UI
         state.meta = { title: '精细时间管理', sub: '日/周双视图 · 拖拽创建 · 标签系统' };
         renderToolApp({ ...LEGACY_TIME, path: '/time/' });
         return;
