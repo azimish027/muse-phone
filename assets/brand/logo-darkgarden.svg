@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- 透明底（深色背景时用） -->
+  <rect width="600" height="600" fill="none"/>
+  
+  <!-- 8根日轮射线（奶白 + 金） -->
+  <g stroke="#E8D5B7" stroke-width="12" stroke-linecap="butt">
+    <line x1="300" y1="60" x2="300" y2="95"/>
+    <line x1="300" y1="505" x2="300" y2="540"/>
+    <line x1="60" y1="300" x2="95" y2="300"/>
+    <line x1="505" y1="300" x2="540" y2="300"/>
+    <line x1="100" y1="100" x2="125" y2="125"/>
+    <line x1="475" y1="475" x2="500" y2="500"/>
+    <line x1="500" y1="100" x2="475" y2="125"/>
+    <line x1="125" y1="475" x2="100" y2="500"/>
+  </g>
+  
+  <!-- 外圆 -->
+  <circle cx="300" cy="300" r="175" fill="none" stroke="#E8D5B7" stroke-width="10"/>
+  
+  <!-- 内圆（金） -->
+  <circle cx="300" cy="300" r="120" fill="none" stroke="#D4A24A" stroke-width="4"/>
+  
+  <!-- 说话口型 + 中心小点（金） -->
+  <path d="M 240 280 Q 300 320 360 280" fill="none" stroke="#E8D5B7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 240 320 Q 300 280 360 320" fill="none" stroke="#D4A24A" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="300" cy="300" r="6" fill="#D4A24A"/>
+  
+  <!-- 底部文字 -->
+  <text x="300" y="450" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="600" fill="#F5EFE6" letter-spacing="3">缪萨克斯集市</text>
+  <text x="300" y="478" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#C4A484" letter-spacing="4">Musarches</text>
+  <text x="300" y="510" text-anchor="middle" font-family="'Hiragino Sans GB', Georgia, serif" font-size="13" fill="#D4A24A" letter-spacing="6">☀ 太 阳 神 的 后 花 园 ☀</text>
+  <text x="540" y="555" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#8A7A68" letter-spacing="3" font-style="italic">— azimish</text>
+  
+  <!-- 邮戳感：四角小圆点（金） -->
+  <g fill="#D4A24A">
+    <circle cx="50" cy="50" r="6"/>
+    <circle cx="550" cy="50" r="6"/>
+    <circle cx="50" cy="550" r="6"/>
+    <circle cx="550" cy="550" r="6"/>
+  </g>
+</svg>
