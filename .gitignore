@@ -72,3 +72,24 @@ package-lock.json
 node_modules/sharp/
 # public 目录已复制到根，不再需要单独跟踪
 public/
+
+# === Vercel 静态部署不需要这些 ===
+Dockerfile
+docker-compose.yml
+ecosystem.config.js
+capacitor.config.ts
+android/
+server/
+nginx/
+scripts/
+data/
+node_modules/
+lingua-magic-source.*
+pages-deploy.zip
+*.apk
+*.apk.idsig
+android/
+.DS_Store
+screenshots/
+timeblock_app/
+musarches_fair/
