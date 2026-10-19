@@ -1,0 +1,63 @@
+{
+  "brand": {
+    "name": "缪萨克斯集市 Musarches Fair",
+    "studio": "忒拉蓬 Therapōn Musarches",
+    "studio_zh": "缪斯的大祭司",
+    "owner": "azimish",
+    "owner_title": "个人协作体",
+    "logo": "/assets/logo.svg",
+    "palette": {
+      "sun_orange": "#C45A3B",
+      "dusk_mauve":  "#9B7B9F",
+      "ink_gray":    "#5D5D5D",
+      "parchment":   "#F5EFE6",
+      "golden_wheat":"#D4A24A"
+    }
+  },
+  "social": {
+    "learners": 2847,
+    "new_today": 126,
+    "slogan": "2,847 人正在逛集市"
+  },
+  "apps": [
+    {
+      "id": "time",
+      "path": "/time/",
+      "icon": "⏳",
+      "name": "时之砂刻",
+      "name_en": "Sand Chron",
+      "desc": "日周双视图 · 拖拽创建 · 落砂成羽之刻",
+      "why": "我自己的时间管理一直很糟，写代码会忘记喝水，聊天会忘记开会。做一个让我一眼看清「时间都去哪了」的工具，送给同样需要它的人。",
+      "size": "full",
+      "version": "2.0.0",
+      "enabled": true,
+      "cover": "/assets/cover-time.svg"
+    },
+    {
+      "id": "rpg",
+      "path": "/rpg/",
+      "icon": "🏹",
+      "name": "Hunter Quest",
+      "name_zh": "猎语征途",
+      "desc": "英语短语念成咒语 · 击败小妖怪 · XP 升级",
+      "why": "学英语的最大敌人是无聊。把英语念成「咒语」，开口就能获得战斗反馈 — 念对一句，妖怪掉一滴血。游戏化，但不幼稚。",
+      "size": "full",
+      "version": "1.0.0",
+      "enabled": true,
+      "cover": "/assets/cover-rpg.svg"
+    },
+    {
+      "id": "mind",
+      "path": "/mind/",
+      "icon": "🌌",
+      "name": "星空梦想乡",
+      "name_en": "Astral Hearth",
+      "desc": "正念冥想 · 情绪日记 · 星球陪伴你的心流",
+      "why": "写代码和学语言都是高强度脑力活，我需要一个地方让大脑降温。画一颗星球，让它慢慢转 3 分钟，深呼吸，然后继续。",
+      "size": "full",
+      "version": "1.0.0",
+      "enabled": true,
+      "cover": "/assets/cover-mind.svg"
+    }
+  ]
+}

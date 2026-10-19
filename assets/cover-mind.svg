@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  <!-- 羊皮纸底 -->
+  <rect width="640" height="360" fill="#F5EFE6"/>
+  <!-- 黄昏径向渐变（粉紫色晕，像老照片的暗角） -->
+  <defs>
+    <radialGradient id="dusk" cx="55%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#9B7B9F" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#C45A3B" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#F5EFE6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#dusk)"/>
+  
+  <!-- 星球 -->
+  <g transform="translate(360,180)">
+    <!-- 星球本体 -->
+    <circle r="52" fill="#C45A3B" fill-opacity="0.22" stroke="#C45A3B" stroke-width="4"/>
+    <!-- 行星环（椭圆，倾斜） -->
+    <ellipse cx="0" cy="0" rx="90" ry="22" fill="none" stroke="#9B7B9F" stroke-width="3.5"/>
+    <ellipse cx="0" cy="0" rx="90" ry="22" fill="none" stroke="#D4A24A" stroke-width="1" stroke-dasharray="4,6" opacity="0.6"/>
+    <!-- 中心暖光点（壁炉 hearth） -->
+    <circle r="8" fill="#C45A3B"/>
+    <circle r="4" fill="#D4A24A"/>
+    <!-- 小星点 -->
+    <g fill="#9B7B9F" opacity="0.7">
+      <circle cx="-70" cy="-40" r="1.5"/>
+      <circle cx="80" cy="-55" r="1.2"/>
+      <circle cx="-50" cy="60" r="1"/>
+      <circle cx="95" cy="40" r="1.5"/>
+      <circle cx="-100" cy="-10" r="1"/>
+      <circle cx="110" cy="-15" r="1"/>
+    </g>
+  </g>
+  
+  <!-- 小日轮水印 -->
+  <g transform="translate(70,60)" opacity="0.3">
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#C45A3B" stroke-width="2.5"/>
+    <g stroke="#C45A3B" stroke-width="2.5" stroke-linecap="butt">
+      <line x1="0" y1="-28" x2="0" y2="-20"/>
+      <line x1="0" y1="20" x2="0" y2="28"/>
+      <line x1="-28" y1="0" x2="-20" y2="0"/>
+      <line x1="20" y1="0" x2="28" y2="0"/>
+    </g>
+  </g>
+  
+  <!-- 文字 -->
+  <text x="30" y="330" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#5D5D5D" letter-spacing="2">Astral Hearth</text>
+  <text x="30" y="348" font-family="Georgia, serif" font-size="13" fill="#9B7B9F" letter-spacing="4">星 空 梦 想 乡</text>
+</svg>

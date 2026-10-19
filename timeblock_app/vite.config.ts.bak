@@ -1,0 +1,25 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// 极简配置：去掉灵光闪平台特有的所有 block*Plugin
+// 构建产物用相对路径 base，方便嵌入到任何子路径下
+export default defineConfig({
+  base: './',
+  plugins: [react()],
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    // 让 index.html 里的资源引用都是相对路径
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+      },
+    },
+  },
+  // 简化 safe-area（去掉平台特有 env() vars）
+  css: {
+    preprocessorOptions: {},
+  },
+})

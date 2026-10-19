@@ -1,0 +1,480 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * 产品经理赵博宇（泊语）发现安卓端应用载入时会先显示白色底色，因此注释掉这里的默认白色背景。
+ * html {
+ *   background-color: #ffffff;
+ * }
+ */
+
+:root {
+  --flash-app-safe-area-inset-top: 0px;
+  --flash-app-safe-area-inset-right: 0px;
+  --flash-app-safe-area-inset-bottom: 0px;
+  --flash-app-safe-area-inset-left: 0px;
+  --flash-app-safe-top: var(--flash-app-safe-area-inset-top, 0px);
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground;
+  }
+}
+
+/* ============ 多主题视觉体系（CSS 变量驱动） ============ */
+:root {
+  /* 默认主题：彩色时间画布（浅色留白 + 标签彩色氛围 + 玻璃层次） */
+  --bg: #f7f6f2;
+  --bg-gradient: linear-gradient(180deg, #f1edf8 0%, #faf9f6 38%, #faf9f6 100%);
+  --canvas-bg: #f4f3ef;
+  --card-bg: #ffffff;
+  --surface-1: #f6f5f1;
+  --surface-2: #efede8;
+  --surface-2-strong: #e7e4dd;
+  --surface-3: #f2f1ec;
+  --border: #e8e4dc;
+  --divider: #f0ede6;
+  --divider-soft: #ede9e2;
+  --text: #211f1b;
+  --text-2: #78726a;
+  --text-3: #a8a29a;
+  --primary: #4f46e5;
+  --primary-strong: #4338ca;
+  --primary-tint: #eef0ff;
+  --primary-tint-strong: #e0e3ff;
+  --primary-tint-border: #c7cdff;
+  --primary-deep: #312e81;
+  --primary-soft: #f4f4ff;
+  --on-primary: #ffffff;
+  --danger: #e5484d;
+  --danger-tint: #fdeeee;
+  --danger-border: #f6c9cb;
+  --danger-text: #b42324;
+  --danger-deep: #7a1a1a;
+  --danger-tint-2: #fbe9e9;
+  --danger-tint-3: #fdf3f3;
+  --success: #0e9f6e;
+  --glass: rgba(255, 255, 255, 0.96);
+  --glass-soft: rgba(255, 255, 255, 0.92);
+  --glass-2: rgba(255, 255, 255, 0.9);
+  --glass-3: rgba(255, 255, 255, 0.85);
+  --bg-glass: rgba(247, 246, 242, 0.96);
+  --grid-bg: rgba(253, 252, 250, 0.82);
+  --grid-minor: #ece8e0;
+  --grid-major: #e2ddd3;
+  --canvas-dot: #ddd8ce;
+  --week-sep: #c9c2b6;
+  --resizer: #d6d1c8;
+  --grip: #bab3a9;
+  --shadow-1: rgba(33, 31, 27, 0.08);
+  --shadow-2: rgba(33, 31, 27, 0.12);
+  --shadow-float: rgba(16, 24, 40, 0.12);
+  --mask: rgba(33, 31, 27, 0.18);
+  --mask-strong: rgba(33, 31, 27, 0.42);
+  --overlay-strong: rgba(33, 31, 27, 0.82);
+  --toast-bg: rgba(33, 31, 27, 0.92);
+  --primary-glow-1: rgba(79, 70, 229, 0.28);
+  --primary-glow-2: rgba(79, 70, 229, 0.55);
+  --primary-glow-3: rgba(79, 70, 229, 0.18);
+  --primary-glow-4: rgba(79, 70, 229, 0.35);
+  --primary-glow-5: rgba(79, 70, 229, 0.92);
+  --pattern-color: rgba(79, 70, 229, 0.07);
+  --pattern-color-2: rgba(8, 145, 178, 0.05);
+  --radius-card: 18px;
+  --radius-block: 14px;
+  --radius-drawer: 24px;
+  --radius-btn: 999px;
+}
+
+[data-theme='dark'] {
+  /* 深色沉浸：深邃夜空 + 霓虹强调 */
+  --bg: #0f1217;
+  --bg-gradient: linear-gradient(180deg, #151b26 0%, #0f1217 45%, #0c0f13 100%);
+  --canvas-bg: #0d1015;
+  --card-bg: #161b23;
+  --surface-1: #1a2029;
+  --surface-2: #1f2631;
+  --surface-2-strong: #272f3c;
+  --surface-3: #202630;
+  --border: #252d39;
+  --divider: #1c222c;
+  --divider-soft: #212731;
+  --text: #e8ecf2;
+  --text-2: #9aa4b2;
+  --text-3: #5f6b7a;
+  --primary: #7c8cf8;
+  --primary-strong: #93a0fa;
+  --primary-tint: rgba(124, 140, 248, 0.16);
+  --primary-tint-strong: rgba(124, 140, 248, 0.26);
+  --primary-tint-border: rgba(124, 140, 248, 0.45);
+  --primary-deep: #c7d2fe;
+  --primary-soft: #1a2130;
+  --on-primary: #ffffff;
+  --danger: #f2555a;
+  --danger-tint: rgba(242, 85, 90, 0.14);
+  --danger-border: rgba(242, 85, 90, 0.4);
+  --danger-text: #ff8a8e;
+  --danger-deep: #ffb3b5;
+  --danger-tint-2: rgba(242, 85, 90, 0.12);
+  --danger-tint-3: rgba(242, 85, 90, 0.08);
+  --success: #34d399;
+  --glass: rgba(22, 27, 35, 0.96);
+  --glass-soft: rgba(22, 27, 35, 0.92);
+  --glass-2: rgba(22, 27, 35, 0.9);
+  --glass-3: rgba(22, 27, 35, 0.85);
+  --bg-glass: rgba(15, 18, 23, 0.96);
+  --grid-bg: rgba(19, 24, 31, 0.82);
+  --grid-minor: #1b212b;
+  --grid-major: #242c38;
+  --canvas-dot: #2a3340;
+  --week-sep: #39445a;
+  --resizer: #38424f;
+  --grip: #3d4757;
+  --shadow-1: rgba(0, 0, 0, 0.35);
+  --shadow-2: rgba(0, 0, 0, 0.5);
+  --shadow-float: rgba(0, 0, 0, 0.55);
+  --mask: rgba(0, 0, 0, 0.5);
+  --mask-strong: rgba(0, 0, 0, 0.62);
+  --overlay-strong: rgba(0, 0, 0, 0.8);
+  --toast-bg: rgba(8, 11, 15, 0.94);
+  --primary-glow-1: rgba(124, 140, 248, 0.3);
+  --primary-glow-2: rgba(124, 140, 248, 0.55);
+  --primary-glow-3: rgba(124, 140, 248, 0.22);
+  --primary-glow-4: rgba(124, 140, 248, 0.4);
+  --primary-glow-5: rgba(124, 140, 248, 0.92);
+  --pattern-color: rgba(124, 140, 248, 0.08);
+  --pattern-color-2: rgba(52, 211, 153, 0.06);
+  --radius-card: 16px;
+  --radius-block: 12px;
+  --radius-drawer: 22px;
+  --radius-btn: 14px;
+}
+
+[data-theme='cartoon'] {
+  /* 活泼卡通：奶油暖调 + 圆润跳跃 */
+  --bg: #fff6e8;
+  --bg-gradient: linear-gradient(180deg, #fff0dc 0%, #fff7ea 40%, #fffaf2 100%);
+  --canvas-bg: #fff3e2;
+  --card-bg: #ffffff;
+  --surface-1: #fff2e0;
+  --surface-2: #ffe9d0;
+  --surface-2-strong: #ffdfbc;
+  --surface-3: #fff0dc;
+  --border: #ffd9b6;
+  --divider: #ffe9d2;
+  --divider-soft: #ffedda;
+  --text: #3b2f2a;
+  --text-2: #8a7468;
+  --text-3: #bba596;
+  --primary: #ff6b4a;
+  --primary-strong: #f2542f;
+  --primary-tint: #ffe8e0;
+  --primary-tint-strong: #ffd8cb;
+  --primary-tint-border: #ffb7a5;
+  --primary-deep: #a63a1e;
+  --primary-soft: #fff1ec;
+  --on-primary: #ffffff;
+  --danger: #ff5d5d;
+  --danger-tint: #ffeaea;
+  --danger-border: #ffc4c4;
+  --danger-text: #c23333;
+  --danger-deep: #8f1d1d;
+  --danger-tint-2: #ffdede;
+  --danger-tint-3: #fff4f4;
+  --success: #22b573;
+  --glass: rgba(255, 255, 255, 0.96);
+  --glass-soft: rgba(255, 255, 255, 0.92);
+  --glass-2: rgba(255, 255, 255, 0.9);
+  --glass-3: rgba(255, 255, 255, 0.88);
+  --bg-glass: rgba(255, 246, 232, 0.96);
+  --grid-bg: rgba(255, 252, 246, 0.85);
+  --grid-minor: #ffe9d0;
+  --grid-major: #ffdcbb;
+  --canvas-dot: #ffd2a6;
+  --week-sep: #f2b98c;
+  --resizer: #f7d3b0;
+  --grip: #e6b791;
+  --shadow-1: rgba(180, 110, 60, 0.14);
+  --shadow-2: rgba(180, 110, 60, 0.2);
+  --shadow-float: rgba(180, 110, 60, 0.22);
+  --mask: rgba(90, 55, 30, 0.22);
+  --mask-strong: rgba(90, 55, 30, 0.45);
+  --overlay-strong: rgba(90, 55, 30, 0.78);
+  --toast-bg: rgba(90, 55, 30, 0.92);
+  --primary-glow-1: rgba(255, 107, 74, 0.3);
+  --primary-glow-2: rgba(255, 107, 74, 0.55);
+  --primary-glow-3: rgba(255, 107, 74, 0.2);
+  --primary-glow-4: rgba(255, 107, 74, 0.38);
+  --primary-glow-5: rgba(255, 107, 74, 0.92);
+  --pattern-color: rgba(255, 107, 74, 0.09);
+  --pattern-color-2: rgba(255, 176, 32, 0.07);
+  --radius-card: 22px;
+  --radius-block: 18px;
+  --radius-drawer: 28px;
+  --radius-btn: 999px;
+}
+
+[data-theme='galgame'] {
+  /* 二次元心动：古早 galgame 味 · 粉彩赛璐璐 · 圆润可爱 */
+  --bg: #fff1f6;
+  --bg-gradient: linear-gradient(180deg, #ffe3ef 0%, #fdf0f8 38%, #f5efff 100%);
+  --canvas-bg: #fdeef6;
+  --card-bg: #ffffff;
+  --surface-1: #fff5f9;
+  --surface-2: #ffeaf3;
+  --surface-2-strong: #ffdcea;
+  --surface-3: #fff0f8;
+  --border: #ffd3e4;
+  --divider: #ffe9f2;
+  --divider-soft: #ffedf4;
+  --text: #4a3b4a;
+  --text-2: #9c7d92;
+  --text-3: #c4a8ba;
+  --primary: #f472b6;
+  --primary-strong: #ec5fa7;
+  --primary-tint: #ffe4f1;
+  --primary-tint-strong: #ffd0e7;
+  --primary-tint-border: #ffa9d4;
+  --primary-deep: #a13d78;
+  --primary-soft: #fff0f7;
+  --on-primary: #ffffff;
+  --danger: #ff5d8f;
+  --danger-tint: #ffeaf1;
+  --danger-border: #ffc4d8;
+  --danger-text: #c2336b;
+  --danger-deep: #8f1d4a;
+  --danger-tint-2: #ffdeeb;
+  --danger-tint-3: #fff4f8;
+  --success: #22b5a0;
+  --glass: rgba(255, 255, 255, 0.94);
+  --glass-soft: rgba(255, 255, 255, 0.9);
+  --glass-2: rgba(255, 255, 255, 0.88);
+  --glass-3: rgba(255, 255, 255, 0.84);
+  --bg-glass: rgba(255, 241, 246, 0.94);
+  --grid-bg: rgba(255, 250, 253, 0.84);
+  --grid-minor: #ffdceb;
+  --grid-major: #ffc9de;
+  --canvas-dot: #ffc2da;
+  --week-sep: #f2a8c6;
+  --resizer: #f8c6da;
+  --grip: #e5a7c2;
+  --shadow-1: rgba(214, 120, 166, 0.14);
+  --shadow-2: rgba(214, 120, 166, 0.22);
+  --shadow-float: rgba(214, 120, 166, 0.24);
+  --mask: rgba(90, 45, 68, 0.2);
+  --mask-strong: rgba(90, 45, 68, 0.44);
+  --overlay-strong: rgba(90, 45, 68, 0.8);
+  --toast-bg: rgba(90, 45, 68, 0.92);
+  --primary-glow-1: rgba(244, 114, 182, 0.3);
+  --primary-glow-2: rgba(244, 114, 182, 0.55);
+  --primary-glow-3: rgba(244, 114, 182, 0.2);
+  --primary-glow-4: rgba(244, 114, 182, 0.38);
+  --primary-glow-5: rgba(244, 114, 182, 0.92);
+  --pattern-color: rgba(244, 114, 182, 0.09);
+  --pattern-color-2: rgba(167, 139, 250, 0.08);
+  --radius-card: 26px;
+  --radius-block: 20px;
+  --radius-drawer: 30px;
+  --radius-btn: 999px;
+}
+
+[data-theme='business'] {
+  /* 商务质感：沉稳蓝灰 + 克制精致 */
+  --bg: #f2f4f7;
+  --bg-gradient: linear-gradient(180deg, #edf1f6 0%, #f4f5f7 45%, #f4f5f7 100%);
+  --canvas-bg: #eef1f5;
+  --card-bg: #ffffff;
+  --surface-1: #f7f8fa;
+  --surface-2: #eef1f4;
+  --surface-2-strong: #e4e8ee;
+  --surface-3: #f1f3f6;
+  --border: #dbe1ea;
+  --divider: #edf0f5;
+  --divider-soft: #e9edf2;
+  --text: #1f2937;
+  --text-2: #64748b;
+  --text-3: #94a3b8;
+  --primary: #1d4ed8;
+  --primary-strong: #1e40af;
+  --primary-tint: #e8eefc;
+  --primary-tint-strong: #d8e3fa;
+  --primary-tint-border: #b6ccf5;
+  --primary-deep: #1e3a8a;
+  --primary-soft: #eef3fc;
+  --on-primary: #ffffff;
+  --danger: #dc2626;
+  --danger-tint: #fef2f2;
+  --danger-border: #fecaca;
+  --danger-text: #b91c1c;
+  --danger-deep: #7f1d1d;
+  --danger-tint-2: #fde8e8;
+  --danger-tint-3: #fef7f7;
+  --success: #047857;
+  --glass: rgba(255, 255, 255, 0.96);
+  --glass-soft: rgba(255, 255, 255, 0.92);
+  --glass-2: rgba(255, 255, 255, 0.9);
+  --glass-3: rgba(255, 255, 255, 0.85);
+  --bg-glass: rgba(242, 244, 247, 0.96);
+  --grid-bg: rgba(248, 249, 251, 0.85);
+  --grid-minor: #e8ecf1;
+  --grid-major: #dbe1ea;
+  --canvas-dot: #d3dae3;
+  --week-sep: #b6c2d1;
+  --resizer: #cbd4de;
+  --grip: #aeb9c6;
+  --shadow-1: rgba(31, 41, 55, 0.06);
+  --shadow-2: rgba(31, 41, 55, 0.1);
+  --shadow-float: rgba(31, 41, 55, 0.12);
+  --mask: rgba(31, 41, 55, 0.2);
+  --mask-strong: rgba(31, 41, 55, 0.45);
+  --overlay-strong: rgba(31, 41, 55, 0.8);
+  --toast-bg: rgba(31, 41, 55, 0.92);
+  --primary-glow-1: rgba(29, 78, 216, 0.26);
+  --primary-glow-2: rgba(29, 78, 216, 0.5);
+  --primary-glow-3: rgba(29, 78, 216, 0.16);
+  --primary-glow-4: rgba(29, 78, 216, 0.32);
+  --primary-glow-5: rgba(29, 78, 216, 0.92);
+  --pattern-color: rgba(29, 78, 216, 0.06);
+  --pattern-color-2: rgba(71, 85, 105, 0.05);
+  --radius-card: 12px;
+  --radius-block: 8px;
+  --radius-drawer: 16px;
+  --radius-btn: 10px;
+}
+
+[data-theme='minimal'] {
+  /* 极简留白：黑白灰阶 + 专注安静 */
+  --bg: #fafafa;
+  --bg-gradient: linear-gradient(180deg, #f7f7f8 0%, #fcfcfc 50%, #fcfcfc 100%);
+  --canvas-bg: #f6f6f7;
+  --card-bg: #ffffff;
+  --surface-1: #f6f6f7;
+  --surface-2: #f0f0f2;
+  --surface-2-strong: #e9e9ec;
+  --surface-3: #f2f2f4;
+  --border: #e8e8ea;
+  --divider: #f0f0f2;
+  --divider-soft: #ebebee;
+  --text: #111113;
+  --text-2: #6b6b72;
+  --text-3: #a1a1aa;
+  --primary: #18181b;
+  --primary-strong: #000000;
+  --primary-tint: #f4f4f5;
+  --primary-tint-strong: #e9e9ec;
+  --primary-tint-border: #d4d4d8;
+  --primary-deep: #27272a;
+  --primary-soft: #f5f5f6;
+  --on-primary: #ffffff;
+  --danger: #dc2626;
+  --danger-tint: #fef2f2;
+  --danger-border: #fecaca;
+  --danger-text: #b91c1c;
+  --danger-deep: #7f1d1d;
+  --danger-tint-2: #fde8e8;
+  --danger-tint-3: #fef7f7;
+  --success: #16a34a;
+  --glass: rgba(255, 255, 255, 0.96);
+  --glass-soft: rgba(255, 255, 255, 0.92);
+  --glass-2: rgba(255, 255, 255, 0.9);
+  --glass-3: rgba(255, 255, 255, 0.85);
+  --bg-glass: rgba(250, 250, 250, 0.96);
+  --grid-bg: rgba(252, 252, 252, 0.85);
+  --grid-minor: #efeff1;
+  --grid-major: #e4e4e7;
+  --canvas-dot: #dcdce0;
+  --week-sep: #c4c4cc;
+  --resizer: #d6d6da;
+  --grip: #bdbdc4;
+  --shadow-1: rgba(17, 17, 19, 0.05);
+  --shadow-2: rgba(17, 17, 19, 0.09);
+  --shadow-float: rgba(17, 17, 19, 0.1);
+  --mask: rgba(17, 17, 19, 0.16);
+  --mask-strong: rgba(17, 17, 19, 0.4);
+  --overlay-strong: rgba(17, 17, 19, 0.8);
+  --toast-bg: rgba(17, 17, 19, 0.9);
+  --primary-glow-1: rgba(24, 24, 27, 0.18);
+  --primary-glow-2: rgba(24, 24, 27, 0.4);
+  --primary-glow-3: rgba(24, 24, 27, 0.12);
+  --primary-glow-4: rgba(24, 24, 27, 0.25);
+  --primary-glow-5: rgba(24, 24, 27, 0.92);
+  --pattern-color: rgba(17, 17, 19, 0.05);
+  --pattern-color-2: rgba(17, 17, 19, 0.03);
+  --radius-card: 14px;
+  --radius-block: 10px;
+  --radius-drawer: 20px;
+  --radius-btn: 999px;
+}

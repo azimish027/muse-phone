@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#F5EFE6"/>
+  <g stroke="#C45A3B" stroke-width="14" stroke-linecap="butt">
+    <line x1="300" y1="50" x2="300" y2="95"/>
+    <line x1="300" y1="505" x2="300" y2="550"/>
+    <line x1="50" y1="300" x2="95" y2="300"/>
+    <line x1="505" y1="300" x2="550" y2="300"/>
+    <line x1="90" y1="90" x2="125" y2="125"/>
+    <line x1="475" y1="475" x2="510" y2="510"/>
+    <line x1="510" y1="90" x2="475" y2="125"/>
+    <line x1="125" y1="475" x2="90" y2="510"/>
+  </g>
+  <circle cx="300" cy="300" r="180" fill="none" stroke="#C45A3B" stroke-width="12"/>
+  <ellipse cx="300" cy="300" rx="155" ry="50" fill="none" stroke="#C45A3B" stroke-width="6" opacity="0.9"/>
+  <ellipse cx="300" cy="300" rx="140" ry="42" fill="none" stroke="#9B7B9F" stroke-width="4" opacity="0.8"/>
+  <g stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M 440 220 Q 380 260, 340 280 Q 320 292, 306 298" stroke="#C45A3B"/>
+    <path d="M 420 400 Q 380 360, 340 340 Q 320 328, 306 322" stroke="#9B7B9F"/>
+    <path d="M 160 400 Q 200 360, 240 340 Q 260 328, 280 322" stroke="#C45A3B"/>
+    <path d="M 180 220 Q 220 260, 260 280 Q 280 292, 294 298" stroke="#9B7B9F"/>
+  </g>
+  <circle cx="300" cy="300" r="28" fill="#1a0e08" stroke="#D4A24A" stroke-width="4"/>
+  <circle cx="300" cy="300" r="22" fill="#0a0504"/>
+  <circle cx="272" cy="290" r="3" fill="#D4A24A"/>
+  <circle cx="328" cy="310" r="3" fill="#D4A24A"/>
+  <text x="300" y="450" text-anchor="middle" font-family="Georgia, serif" font-size="36" font-weight="700" fill="#2B2B2B" letter-spacing="4">缪萨克斯集市</text>
+  <text x="300" y="480" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#7A5A6E" letter-spacing="6">Musarches</text>
+  <text x="300" y="515" text-anchor="middle" font-family="'Hiragino Sans GB', Georgia, serif" font-size="14" fill="#9B7B9F" letter-spacing="6">☀ 太 阳 神 的 后 花 园 ☀</text>
+  <text x="540" y="558" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#B0A295" letter-spacing="3" font-style="italic">— azimish</text>
+  <g fill="#C45A3B">
+    <circle cx="50" cy="50" r="6"/>
+    <circle cx="550" cy="50" r="6"/>
+    <circle cx="50" cy="550" r="6"/>
+    <circle cx="550" cy="550" r="6"/>
+  </g>
+</svg>

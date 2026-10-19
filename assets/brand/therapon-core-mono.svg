@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- 羊皮纸底色 -->
+  <rect width="512" height="512" fill="#ffffff"/>
+  
+  <!-- 四角邮戳 -->
+  <circle cx="48" cy="48" r="8" fill="none" stroke="#000000" stroke-width="2"/>
+  <circle cx="464" cy="48" r="8" fill="none" stroke="#000000" stroke-width="2"/>
+  <circle cx="48" cy="464" r="8" fill="none" stroke="#000000" stroke-width="2"/>
+  <circle cx="464" cy="464" r="8" fill="none" stroke="#000000" stroke-width="2"/>
+
+  <!-- 8 根日轮射线（保留老外形）-->
+  <g stroke="#000000" stroke-width="6" stroke-linecap="round" fill="none">
+    <line x1="256" y1="70"  x2="256" y2="110"/>
+    <line x1="256" y1="402" x2="256" y2="362"/>
+    <line x1="70"  y1="256" x2="110" y2="256"/>
+    <line x1="402" y1="256" x2="362" y2="256"/>
+    <line x1="124" y1="124" x2="152" y2="152"/>
+    <line x1="388" y1="388" x2="360" y2="360"/>
+    <line x1="388" y1="124" x2="360" y2="152"/>
+    <line x1="124" y1="388" x2="152" y2="360"/>
+  </g>
+
+  <!-- 外圆（日轮·粉色）— 就是你画的那个粉圈 -->
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#000000" stroke-width="5"/>
+
+  <!-- 内紫环（虚线圈） -->
+  <circle cx="256" cy="256" r="110" fill="none" stroke="#555555" stroke-width="3" stroke-dasharray="6 4"/>
+
+  <!-- ====== 核心：你画的那个融合 ====== -->
+  <!-- 从外到内，每层椭圆环倾斜角度不同，越往里越密 -->
+  <g fill="none" stroke-linecap="round">
+    
+    <!-- 第 1 层：外圈圆（正圆）— 最像你画的最外那圈 -->
+    <ellipse cx="256" cy="256" rx="90" ry="90" stroke="#000000" stroke-width="3" opacity="0.7"/>
+    
+    <!-- 第 2 层：轻微倾斜椭圆 -->
+    <ellipse cx="256" cy="256" rx="78" ry="50" stroke="#000000" stroke-width="2.5" transform="rotate(-15 256 256)" opacity="0.6"/>
+    
+    <!-- 第 3 层：更倾斜 + 更小 -->
+    <ellipse cx="256" cy="256" rx="68" ry="42" stroke="#555555" stroke-width="2.5" transform="rotate(25 256 256)" opacity="0.7"/>
+    
+    <!-- 第 4 层：反方向倾斜 -->
+    <ellipse cx="256" cy="256" rx="55" ry="34" stroke="#000000" stroke-width="2" transform="rotate(-40 256 256)" opacity="0.65"/>
+    
+    <!-- 第 5 层：大角度倾斜（接近横躺）-->
+    <ellipse cx="256" cy="256" rx="42" ry="22" stroke="#555555" stroke-width="2" transform="rotate(55 256 256)" opacity="0.75"/>
+    
+    <!-- 第 6 层：再反方向 -->
+    <ellipse cx="256" cy="256" rx="30" ry="16" stroke="#000000" stroke-width="2" transform="rotate(-70 256 256)" opacity="0.7"/>
+    
+    <!-- 第 7 层：几乎贴中心 -->
+    <ellipse cx="256" cy="256" rx="18" ry="10" stroke="#555555" stroke-width="1.8" transform="rotate(80 256 256)" opacity="0.8"/>
+
+    <!-- 一条斜穿的螺旋弧 —— 就是你画的那条穿过所有圈的弧 -->
+    <!-- 从外围右下旋进中心左上 -->
+    <path d="M 330 295 
+             Q 300 260, 270 250 
+             Q 240 242, 230 248 
+             Q 222 254, 226 258" 
+          stroke="#000000" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  </g>
+
+  <!-- 中心黑洞（你画的那个黑点）-->
+  <circle cx="256" cy="256" r="12" fill="#000000"/>
+  <circle cx="256" cy="256" r="12" fill="none" stroke="#000000" stroke-width="1" opacity="0.6"/>
+  
+  <!-- 黑洞光晕 -->
+  <circle cx="256" cy="256" r="20" fill="none" stroke="#000000" stroke-width="1" opacity="0.3"/>
+
+  <!-- ====== 底部文字 ====== -->
+  <text x="256" y="440" text-anchor="middle" font-family="Georgia, 'Hiragino Serif', serif" font-size="36" font-weight="800" fill="#000000" letter-spacing="12">忒拉蓬</text>
+  <text x="256" y="466" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-style="italic" fill="#555555" letter-spacing="6">Therapōn</text>
+  <text x="256" y="488" text-anchor="middle" font-family="'Hiragino Sans GB', sans-serif" font-size="12" fill="#000000" letter-spacing="4">☀ 太 阳 神 的 后 花 园 ☀</text>
+  <text x="480" y="504" text-anchor="end" font-family="Georgia, serif" font-size="10" font-style="italic" fill="#333">— azimish</text>
+</svg>

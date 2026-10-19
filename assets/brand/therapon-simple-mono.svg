@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- 羊皮纸底色 -->
+  <rect width="512" height="512" fill="#ffffff"/>
+  
+  <!-- 四角邮戳 -->
+  <circle cx="48" cy="48" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="464" cy="48" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="48" cy="464" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="464" cy="464" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- 8 根日轮射线 -->
+  <g stroke="#1a1a1a" stroke-width="6" stroke-linecap="round" fill="none">
+    <line x1="256" y1="70"  x2="256" y2="110"/>
+    <line x1="256" y1="402" x2="256" y2="362"/>
+    <line x1="70"  y1="256" x2="110" y2="256"/>
+    <line x1="402" y1="256" x2="362" y2="256"/>
+    <line x1="124" y1="124" x2="152" y2="152"/>
+    <line x1="388" y1="388" x2="360" y2="360"/>
+    <line x1="388" y1="124" x2="360" y2="152"/>
+    <line x1="124" y1="388" x2="152" y2="360"/>
+  </g>
+
+  <!-- 外圆（日轮） -->
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#1a1a1a" stroke-width="5"/>
+
+  <!-- 内紫环 -->
+  <circle cx="256" cy="256" r="110" fill="none" stroke="#666666" stroke-width="3" stroke-dasharray="6 4"/>
+
+  <!-- ====== 核心：一条干净螺旋线旋进黑洞 ====== -->
+  <!-- 螺旋从 r=90 慢慢缩小到 r=10，一圈一圈钻进去 -->
+  <g fill="none">
+    <!-- 外旋臂：红色 -->
+    <path d="M 256 166 A 90 90 0 0 1 346 256 A 75 75 0 0 0 256 181 A 60 60 0 0 1 316 256 A 45 45 0 0 0 256 211 A 30 30 0 0 1 286 256 A 18 18 0 0 0 256 238" 
+          stroke="#1a1a1a" stroke-width="5" stroke-linecap="round"/>
+    <!-- 内旋臂：粉紫 -->
+    <path d="M 256 346 A 90 90 0 0 1 166 256 A 75 75 0 0 0 256 331 A 60 60 0 0 1 196 256 A 45 45 0 0 0 256 301 A 30 30 0 0 1 226 256 A 18 18 0 0 0 256 274" 
+          stroke="#666666" stroke-width="4" stroke-linecap="round"/>
+    <!-- 最内圈：淡金 -->
+    <path d="M 256 248 A 10 10 0 0 1 266 256" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- 中心黑洞（小圆点）-->
+  <circle cx="256" cy="256" r="8" fill="#000000"/>
+  
+  <!-- 光晕 -->
+  <circle cx="256" cy="256" r="14" fill="none" stroke="#1a1a1a" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- ====== 底部文字 ====== -->
+  <!-- 忒拉蓬 大字 -->
+  <text x="256" y="440" text-anchor="middle" font-family="Georgia, 'Hiragino Serif', serif" font-size="36" font-weight="800" fill="#000000" letter-spacing="12">忒拉蓬</text>
+  
+  <!-- Therapōn 斜体紫粉 -->
+  <text x="256" y="466" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-style="italic" fill="#666666" letter-spacing="6">Therapōn</text>
+  
+  <!-- tagline -->
+  <text x="256" y="488" text-anchor="middle" font-family="'Hiragino Sans GB', sans-serif" font-size="12" fill="#1a1a1a" letter-spacing="4">☀ 太 阳 神 的 后 花 园 ☀</text>
+
+  <!-- 右下角 azimish -->
+  <text x="480" y="504" text-anchor="end" font-family="Georgia, serif" font-size="10" font-style="italic" fill="#333">— azimish</text>
+</svg>

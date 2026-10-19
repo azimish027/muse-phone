@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#F5EFE6"/>
+  
+  <!-- 8根日轮射线 -->
+  <g stroke="#C45A3B" stroke-width="12" stroke-linecap="butt">
+    <line x1="300" y1="60" x2="300" y2="95"/>
+    <line x1="300" y1="505" x2="300" y2="540"/>
+    <line x1="60" y1="300" x2="95" y2="300"/>
+    <line x1="505" y1="300" x2="540" y2="300"/>
+    <line x1="100" y1="100" x2="125" y2="125"/>
+    <line x1="475" y1="475" x2="500" y2="500"/>
+    <line x1="500" y1="100" x2="475" y2="125"/>
+    <line x1="125" y1="475" x2="100" y2="500"/>
+  </g>
+  
+  <!-- 外圆 -->
+  <circle cx="300" cy="300" r="175" fill="none" stroke="#C45A3B" stroke-width="10"/>
+  <!-- 内圆（粉紫，去掉，让螺旋充满） -->
+  
+  <!-- 对数螺旋（阿基米德螺旋线，从中心向外 3.5 圈） -->
+  <!-- r = 3 + 12*theta，每 2π 半径增加 75 -->
+  <path d="M 300 300 
+           C 306 298, 312 304, 318 310
+           C 324 318, 322 328, 316 336
+           C 308 342, 298 342, 290 336
+           C 282 328, 280 316, 286 308
+           C 292 300, 304 298, 316 302
+           C 328 308, 336 320, 336 334
+           C 334 348, 324 358, 310 362
+           C 296 364, 282 358, 274 346
+           C 266 334, 268 318, 278 308
+           C 288 298, 304 294, 320 298
+           C 336 304, 348 316, 352 332
+           C 354 348, 346 362, 330 370
+           C 314 374, 296 368, 284 356
+           C 272 342, 272 324, 282 310
+           C 294 296, 312 290, 330 294
+           C 348 300, 362 316, 366 336
+           C 368 356, 358 374, 338 384
+           C 318 388, 296 380, 282 364
+           C 268 348, 268 326, 280 308
+           C 294 290, 316 282, 340 288
+           C 362 296, 380 314, 386 338
+           C 390 362, 378 384, 354 398
+           C 330 404, 304 396, 286 378"
+        fill="none" stroke="#C45A3B" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- 更外圈的螺旋（粉紫，继续转） -->
+  <path d="M 286 378
+           C 270 358, 268 332, 280 312
+           C 296 290, 322 280, 350 286
+           C 376 294, 396 314, 404 342
+           C 410 370, 396 396, 370 410
+           C 344 416, 316 408, 296 388
+           C 276 368, 272 340, 284 318"
+        fill="none" stroke="#9B7B9F" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- 中心黑洞小点（金） -->
+  <circle cx="300" cy="300" r="12" fill="#2B1810" stroke="#D4A24A" stroke-width="2"/>
+  
+  <!-- 底部：缪萨克斯集市 Musarches -->
+  <text x="300" y="460" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="600" fill="#2B2B2B" letter-spacing="3">缪萨克斯集市</text>
+  <text x="300" y="488" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#7A5A6E" letter-spacing="4">Musarches</text>
+  <text x="300" y="520" text-anchor="middle" font-family="'Hiragino Sans GB', Georgia, serif" font-size="13" fill="#9B7B9F" letter-spacing="6">☀ 太 阳 神 的 后 花 园 ☀</text>
+  <text x="540" y="565" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#B0A295" letter-spacing="3" font-style="italic">— azimish</text>
+  
+  <!-- 邮戳点 -->
+  <g fill="#C45A3B">
+    <circle cx="50" cy="50" r="6"/>
+    <circle cx="550" cy="50" r="6"/>
+    <circle cx="50" cy="550" r="6"/>
+    <circle cx="550" cy="550" r="6"/>
+  </g>
+</svg>

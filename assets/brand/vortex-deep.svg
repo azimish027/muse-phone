@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <rect width="600" height="600" fill="#F5EFE6"/>
+  
+  <!-- 8根日轮射线 -->
+  <g stroke="#C45A3B" stroke-width="12" stroke-linecap="butt">
+    <line x1="300" y1="60" x2="300" y2="95"/>
+    <line x1="300" y1="505" x2="300" y2="540"/>
+    <line x1="60" y1="300" x2="95" y2="300"/>
+    <line x1="505" y1="300" x2="540" y2="300"/>
+    <line x1="100" y1="100" x2="125" y2="125"/>
+    <line x1="475" y1="475" x2="500" y2="500"/>
+    <line x1="500" y1="100" x2="475" y2="125"/>
+    <line x1="125" y1="475" x2="100" y2="500"/>
+  </g>
+  
+  <!-- 外圆 -->
+  <circle cx="300" cy="300" r="175" fill="none" stroke="#C45A3B" stroke-width="10"/>
+  
+  <!-- 蚊香螺旋：用 5 条紧密同心圆环 + 方向暗示 -->
+  <!-- 外圈粉紫，向内颜色渐深，中心黑洞 -->
+  <circle cx="300" cy="300" r="140" fill="none" stroke="#9B7B9F" stroke-width="5"/>
+  <circle cx="300" cy="300" r="115" fill="none" stroke="#7A5A6E" stroke-width="5"/>
+  <circle cx="300" cy="300" r="90"  fill="none" stroke="#5D3D50" stroke-width="5"/>
+  <circle cx="300" cy="300" r="65"  fill="none" stroke="#3D2530" stroke-width="5"/>
+  <circle cx="300" cy="300" r="40"  fill="none" stroke="#2B1810" stroke-width="5"/>
+  
+  <!-- 三条弧形切线，制造旋转/漩涡感 -->
+  <!-- 左上弧 -->
+  <path d="M 160 260 Q 200 220 240 240" fill="none" stroke="#D4A24A" stroke-width="3" stroke-linecap="round"/>
+  <!-- 右下弧 -->
+  <path d="M 360 360 Q 400 380 440 340" fill="none" stroke="#D4A24A" stroke-width="3" stroke-linecap="round"/>
+  <!-- 中弧（交叉） -->
+  <path d="M 380 240 Q 340 200 300 220" fill="none" stroke="#C45A3B" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- 中心黑洞 -->
+  <circle cx="300" cy="300" r="22" fill="#1a0e08" stroke="#D4A24A" stroke-width="3"/>
+  <!-- 黑洞高光 -->
+  <circle cx="293" cy="293" r="6" fill="#3D2530" opacity="0.7"/>
+  
+  <!-- 底部文字 -->
+  <text x="300" y="460" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="600" fill="#2B2B2B" letter-spacing="3">缪萨克斯集市</text>
+  <text x="300" y="488" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#7A5A6E" letter-spacing="4">Musarches</text>
+  <text x="300" y="520" text-anchor="middle" font-family="'Hiragino Sans GB', Georgia, serif" font-size="13" fill="#9B7B9F" letter-spacing="6">☀ 太 阳 神 的 后 花 园 ☀</text>
+  <text x="540" y="565" text-anchor="end" font-family="Georgia, serif" font-size="13" fill="#B0A295" letter-spacing="3" font-style="italic">— azimish</text>
+  
+  <!-- 邮戳点 -->
+  <g fill="#C45A3B">
+    <circle cx="50" cy="50" r="6"/>
+    <circle cx="550" cy="50" r="6"/>
+    <circle cx="50" cy="550" r="6"/>
+    <circle cx="550" cy="550" r="6"/>
+  </g>
+</svg>
