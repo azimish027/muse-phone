@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>🔄 强制刷新 · 缪萨克斯</title>
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="refresh" content="0; url=./reset.html">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -21,105 +23,90 @@
     color: #000;
     border: 2px solid;
     border-color: #ffffff #000000 #000000 #ffffff;
-    padding: 24px;
-    max-width: 420px;
+    padding: 20px;
+    max-width: 400px;
     width: 100%;
-    text-align: center;
   }
   .title-bar {
     background: linear-gradient(90deg, #000080, #1084d0);
     color: white;
     padding: 4px 8px;
     font-weight: bold;
-    margin: -24px -24px 16px -24px;
+    margin: -20px -20px 12px -20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
-  .title-bar .x {
-    background: #c0c0c0;
-    color: #000;
-    border: 1px solid;
-    border-color: #ffffff #000000 #000000 #ffffff;
-    padding: 0 6px;
-    font-weight: bold;
-    cursor: default;
-  }
-  h1 { font-size: 16px; margin: 8px 0 16px; }
-  .pulse {
-    font-size: 48px;
-    margin: 12px 0;
-    animation: pulse 1.2s infinite;
-  }
+  h1 { font-size: 15px; margin: 4px 0 12px; }
+  .pulse { font-size: 42px; text-align: center; margin: 8px 0;
+    animation: pulse 0.8s infinite; }
   @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.1); }
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:.5; transform:scale(1.15); }
   }
   .log {
     background: #000;
     color: #0f0;
-    font-family: "Courier New", monospace;
-    font-size: 12px;
-    text-align: left;
-    padding: 12px;
+    font-family: monospace;
+    font-size: 11px;
+    padding: 10px;
     border: 1px solid #808080;
-    margin: 16px 0;
-    min-height: 120px;
-    max-height: 200px;
+    margin: 12px 0;
+    min-height: 100px;
+    max-height: 160px;
     overflow-y: auto;
-    line-height: 1.6;
+    line-height: 1.5;
   }
   .log .ok { color: #0f0; }
   .log .err { color: #f66; }
   .log .warn { color: #ff0; }
-  button {
+  .log .info { color: #8cf; }
+  .countdown { font-size: 40px; font-weight: bold; color: #c00; text-align: center; margin: 8px; }
+  .big-btn {
+    display: block;
+    width: 100%;
     background: #c0c0c0;
     border: 2px solid;
     border-color: #ffffff #000000 #000000 #ffffff;
     color: #000;
-    padding: 8px 24px;
+    padding: 10px;
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
     font-family: inherit;
-    margin: 8px 4px;
+    text-align: center;
   }
-  button:active {
-    border-color: #000000 #ffffff #ffffff #000000;
-  }
-  button[disabled] { opacity: 0.5; cursor: not-allowed; }
-  .countdown {
-    font-size: 32px;
-    font-weight: bold;
-    color: #c00;
-    margin: 12px 0;
-  }
+  .big-btn:active { border-color: #000000 #ffffff #ffffff #000000; }
+  .hidden { display: none !important; }
 </style>
 </head>
 <body>
   <div class="card">
     <div class="title-bar">
-      <span>🔄 缪萨克斯 · 强制刷新工具</span>
-      <span class="x">×</span>
+      <span>🔄 缪萨克斯 · 刷新工具</span>
     </div>
 
+    <!-- 阶段 1：清理中 -->
     <div id="phase1">
-      <h1>🧹 强制清除 Service Worker 缓存</h1>
-      <div class="pulse">🚀</div>
-      <div class="log" id="log">⏳ 准备中...</div>
-      <button id="btn" onclick="start()">⚡ 立刻清缓存 + 刷新</button>
-      <p style="font-size:12px; color:#444; margin-top:12px;">
-        不管旧 SW 多顽固，这个页面会 100% 干掉它。
-      </p>
+      <h1>🧹 正在强制清除 Service Worker 缓存...</h1>
+      <div class="pulse">⚡</div>
+      <div class="log" id="log">⏳ 自动开始...</div>
     </div>
 
-    <div id="phase2" style="display:none">
-      <h1>✅ 搞定！正在跳回首页</h1>
+    <!-- 阶段 2：清理完成 -->
+    <div id="phase2" class="hidden">
+      <h1>✅ 清除完成！跳回首页</h1>
       <div class="pulse">🎉</div>
       <div class="countdown" id="cd">3</div>
-      <p>SW 已清除，缓存已清空，即将重新注册新版 SW。</p>
-      <p style="font-size:12px; color:#444; margin-top:12px;">
-        如果没自动跳转，<a href="./">点这里手动返回首页</a>
+    </div>
+
+    <!-- 阶段 3：失败手动方案 -->
+    <div id="phase3" class="hidden">
+      <h1>⚠️ 需要手动清缓存</h1>
+      <div class="log" id="log3"></div>
+      <button class="big-btn" onclick="location.reload()">🔄 重试自动清除</button>
+      <p style="font-size:11px;margin-top:12px;color:#444;">
+        <b>Android Chrome:</b> 设置 → 应用 → 缪萨克斯 → 卸载<br>
+        <b>iOS Safari:</b> 设置 → Safari → 高级 → 网站数据 → 删 github.io
       </p>
     </div>
   </div>
@@ -132,82 +119,82 @@ function log(msg, type='') {
   logEl.scrollTop = logEl.scrollHeight;
 }
 
-async function start() {
-  document.getElementById('btn').disabled = true;
-  log('🚀 开始强制清除流程...', 'warn');
-
-  // 1. Unregister 所有 SW
-  log('① 查找已注册的 Service Worker...');
-  let swCount = 0;
+async function doClear() {
   try {
+    // 1. 找 SW
+    log('① 查找 Service Worker 注册...', 'info');
     const regs = await navigator.serviceWorker.getRegistrations();
-    log(`   找到 ${regs.length} 个 SW 注册`);
+    log(`   找到 ${regs.length} 个 SW`, 'info');
+
+    // 2. unregister 所有 SW
+    let unreg = 0;
     for (const reg of regs) {
-      await reg.unregister();
-      swCount++;
-      log(`   ✅ 已 unregister: ${reg.scope}`, 'ok');
-    }
-  } catch (e) {
-    log(`   ⚠️ getRegistrations 失败: ${e.message}`, 'warn');
-  }
-
-  // 2. 清所有 Cache Storage
-  log('② 清除 Cache Storage...');
-  try {
-    const keys = await caches.keys();
-    log(`   找到 ${keys.length} 个缓存: ${keys.join(', ') || '(空)'}`);
-    for (const k of keys) {
-      await caches.delete(k);
-      log(`   ✅ 已删除: ${k}`, 'ok');
-    }
-  } catch (e) {
-    log(`   ⚠️ Cache API 失败: ${e.message}`, 'warn');
-  }
-
-  // 3. 清 localStorage / sessionStorage
-  log('③ 清除 LocalStorage...');
-  try {
-    const lsKeys = Object.keys(localStorage);
-    localStorage.clear();
-    sessionStorage.clear();
-    log(`   ✅ 已清 ${lsKeys.length} 项`, 'ok');
-  } catch (e) {
-    log(`   ⚠️ LocalStorage 失败: ${e.message}`, 'warn');
-  }
-
-  // 4. 清 IndexedDB
-  log('④ 清除 IndexedDB...');
-  try {
-    const dbs = await indexedDB.databases();
-    for (const db of dbs) {
-      if (db.name) {
-        indexedDB.deleteDatabase(db.name);
-        log(`   ✅ 已删除 DB: ${db.name}`, 'ok');
+      const ok = await reg.unregister();
+      if (ok) {
+        unreg++;
+        log(`   ✅ 注销: ${reg.scope}`, 'ok');
+      } else {
+        log(`   ⚠️ 注销失败: ${reg.scope}`, 'warn');
       }
     }
-  } catch (e) {
-    log(`   ⚠️ IndexedDB 失败: ${e.message}`, 'warn');
-  }
+    if (regs.length === 0) log('   （没有 SW 注册）', 'info');
+    else log(`   🧹 已注销 ${unreg} / ${regs.length}`, unreg === regs.length ? 'ok' : 'warn');
 
-  // 5. 跳转到 phase2，5 秒后跳首页
-  log(`\n🎉 SW=${swCount} 个注销, 缓存全清！`, 'ok');
-  log('⏳ 3 秒后跳回首页...', 'warn');
-
-  document.getElementById('phase1').style.display = 'none';
-  document.getElementById('phase2').style.display = 'block';
-
-  let cd = 3;
-  const cdEl = document.getElementById('cd');
-  const timer = setInterval(() => {
-    cd--;
-    cdEl.textContent = cd;
-    if (cd <= 0) {
-      clearInterval(timer);
-      // 带 t 参数绕过浏览器缓存
-      window.location.href = './?reset=' + Date.now();
+    // 3. 清 Cache Storage
+    log('② 清除 Cache Storage...', 'info');
+    const keys = await caches.keys();
+    log(`   有 ${keys.length} 个缓存: ${keys.join(', ') || '(空)'}`, 'info');
+    let del = 0;
+    for (const k of keys) {
+      await caches.delete(k);
+      del++;
+      log(`   ✅ 删: ${k}`, 'ok');
     }
-  }, 1000);
+
+    // 4. 清 Storage
+    log('③ 清除 LocalStorage / SessionStorage / IndexedDB...', 'info');
+    try { localStorage.clear(); } catch(e) {}
+    try { sessionStorage.clear(); } catch(e) {}
+    try {
+      const dbs = await indexedDB.databases();
+      for (const db of dbs) {
+        if (db.name) indexedDB.deleteDatabase(db.name);
+      }
+    } catch(e) {}
+    log('   ✅ 全部清完', 'ok');
+
+    // 5. 等一小下让 unregister 完成
+    log(`\n🎉 清除完成！SW=${unreg}, Cache=${del}`, 'ok');
+    log('⏳ 3 秒后跳回首页...', 'warn');
+
+    // 切到 phase2
+    document.getElementById('phase1').classList.add('hidden');
+    document.getElementById('phase2').classList.remove('hidden');
+
+    let cd = 3;
+    const cdEl = document.getElementById('cd');
+    const timer = setInterval(() => {
+      cd--;
+      cdEl.textContent = cd;
+      if (cd <= 0) {
+        clearInterval(timer);
+        // 用时间戳强制绕过所有缓存
+        const ts = Date.now();
+        window.location.replace('./?v=' + ts);
+      }
+    }, 1000);
+
+  } catch (err) {
+    log(`❌ 出错: ${err.message}`, 'err');
+    document.getElementById('phase1').classList.add('hidden');
+    document.getElementById('phase3').classList.remove('hidden');
+  }
 }
+
+// 页面一加载 100ms 后自动开始
+window.addEventListener('load', () => {
+  setTimeout(doClear, 100);
+});
 </script>
 </body>
 </html>
