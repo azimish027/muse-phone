@@ -60,9 +60,10 @@
       username: '缪斯旅人',
       profile: { onboarded: true, lang: 'zh-CN', avatar: '', bio: '欢迎来到缪萨克斯集市！' },
       xp: 1280, level: 5, streak: 7,
+      stats: { levelProgress: 0.35, todayMinutes: 45, totalMinutes: 1280, streakDays: 7 },
     }
   };
-  const STATIC_MOCK_ENDPOINTS = new Set(['/api/auth/me']);
+  const STATIC_MOCK_ENDPOINTS = new Set(['/api/auth/me', '/api/path/today', '/api/progress/overview', '/api/courses', '/api/achievements', '/api/profile']);
 
   async function api(path, method = 'GET', body) {
     const headers = {};
