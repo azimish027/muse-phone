@@ -1,4 +1,5 @@
 {
+  "root": "public",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
