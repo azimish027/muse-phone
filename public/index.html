@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
 <title>缪萨克斯集市 Musarches Fair · 缪斯的语言集市</title>
 <meta name="description" content="缪萨克斯集市 Musarches Fair — 忒拉蓬出品。缪斯的语言工具集市：时之砂刻、Hunter Quest 猎语征途、星空梦想乡，一起让语言像追剧一样上瘾。" />
 <meta name="theme-color" content="#000080" />
@@ -12,8 +13,8 @@
 <meta name="apple-mobile-web-app-title" content="缪萨克斯" />
 <link rel="apple-touch-icon" href="/assets/icon-180.png" />
 <link rel="icon" href="/assets/icon-96.png" type="image/png" />
-<link rel="stylesheet" href="/styles.css?v=1792328595" />
-<link rel="stylesheet" href="/win98.css?v=1792400000" />
+<link rel="stylesheet" href="/styles.css?v=msfv3" />
+<link rel="stylesheet" href="/win98.css?v=msfv3" />
 </head>
 <body>
   <div id="app">
@@ -33,23 +34,51 @@
   <!-- Win98 任务栏 + 开始菜单（由 app.js 在 win98 模式下注入到 body） -->
   <div id="modal" class="modal-host" hidden></div>
   <div id="toast" class="toast-host" aria-live="polite"></div>
-  <script src="/app.js?v=1792328595" defer></script>
+  <script src="/app.js?v=msfv3" defer></script>
   <!-- PWA Service Worker 注册 -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then((reg) => {
+        navigator.serviceWorker.register('/sw.js?v=msfv3').then((reg) => {
           console.log('✅ SW registered (scope:', reg.scope, ')');
-          // 监听新版本 —— 提示用户刷新
-          reg.addEventListener('updatefound', () => {
-            const nw = reg.installing;
-            nw.addEventListener('statechange', () => {
-              if (nw.state === 'installed' && navigator.serviceWorker.controller) {
-                console.log('🔄 新版本已就绪，下次打开生效');
-              }
-            });
+
+          // 新版本就绪 → 自动激活 + 刷新
+          function checkUpdate() {
+            if (reg.installing) {
+              console.log('🔄 SW installing...', reg.installing.state);
+              reg.installing.addEventListener('statechange', () => {
+                console.log('   →', reg.installing.state);
+                if (reg.installing.state === 'installed' && navigator.serviceWorker.controller) {
+                  // 新版本已缓存，跳过等待，立刻激活
+                  reg.installing.postMessage('SKIP_WAITING');
+                  reg.installing.addEventListener('statechange', () => {
+                    if (reg.installing.state === 'activated') {
+                      console.log('✅ 新 SW 激活，自动刷新页面');
+                      location.reload();
+                    }
+                  });
+                }
+              });
+            }
+          }
+
+          reg.addEventListener('updatefound', checkUpdate);
+          checkUpdate(); // 立刻检查（可能已经有 waiting 的 SW）
+
+          // 每 60 秒检查一次有没有新版本
+          setInterval(() => reg.update(), 60000);
+
+          // 用户回到页面时也检查
+          document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) reg.update();
           });
         }).catch((e) => console.warn('⚠️ SW register failed:', e));
+
+        // 当前页面被新 SW 接管时 → 刷新
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          console.log('🔄 controller changed → reload');
+          location.reload();
+        });
       });
     }
   </script>
