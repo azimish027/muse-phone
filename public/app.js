@@ -52,6 +52,18 @@
   function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
   function setToken(t) { t ? localStorage.setItem(TOKEN_KEY, t) : localStorage.removeItem(TOKEN_KEY); }
 
+  // ====== 静态部署模式 Mock 数据（后端没跑时自动启用）======
+  const MOCK_USER = {
+    user: {
+      id: 'demo-001',
+      email: 'demo@musarches.local',
+      username: '缪斯旅人',
+      profile: { onboarded: true, lang: 'zh-CN', avatar: '', bio: '欢迎来到缪萨克斯集市！' },
+      xp: 1280, level: 5, streak: 7,
+    }
+  };
+  const STATIC_MOCK_ENDPOINTS = new Set(['/api/auth/me']);
+
   async function api(path, method = 'GET', body) {
     const headers = {};
     const token = getToken();
@@ -63,11 +75,21 @@
         method, headers, body: body === undefined ? undefined : JSON.stringify(body),
       });
     } catch (e) {
-      throw new Error('网络请求失败 — 后端服务未启动，请稍后再试');
+      // 网络失败 → 看是不是 mock 过的端点
+      if (STATIC_MOCK_ENDPOINTS.has(path) && method === 'GET') {
+        console.warn('🔌 后端不可达，启用静态 Mock:', path);
+        return MOCK_USER;
+      }
+      throw new Error('网络请求失败 — 后端服务未启动');
     }
     let data = null;
     try { data = await res.json(); } catch { /* ignore */ }
     if (!res.ok) {
+      // 404 / 401 等 → mock 一下静态部署
+      if (STATIC_MOCK_ENDPOINTS.has(path) && method === 'GET') {
+        console.warn('🔌 后端返回', res.status, '，启用静态 Mock:', path);
+        return MOCK_USER;
+      }
       if (res.status === 401) { setToken(''); state.user = null; }
       throw new Error((data && data.error) || `请求失败（${res.status}）`);
     }
