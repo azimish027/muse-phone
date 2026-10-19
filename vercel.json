@@ -1,21 +1,7 @@
 {
-  "version": 2,
-  "framework": null,
-  "buildCommand": "",
-  "outputDirectory": "",
-  "installCommand": "",
-  "root": "public",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
-      ]
-    }
   ]
 }
