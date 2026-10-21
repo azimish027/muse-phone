@@ -297,26 +297,95 @@ html, body {
   50%      { opacity: 0.7; }
 }
 
-/* Therapōn logo 投影在挂布上 */
-.therapon-projected {
+/* ============================================================
+   🪧 木制三角名牌架 + Therapōn logo（摊位中央实体展示）
+============================================================ */
+.brand-stand {
   position: absolute;
-  top: 20%;
   left: 50%;
-  transform: translateX(-50%) skewX(-4deg);
-  width: 45%;
-  max-width: 480px;
-  opacity: 0.75;
-  filter:
-    blur(1px)
-    drop-shadow(0 0 20px rgba(255, 220, 150, 0.6))
-    brightness(1.1);
-  z-index: 5;
-  mix-blend-mode: multiply;
-  animation: logo-glow 4s ease-in-out infinite;
+  bottom: 28%;
+  transform: translateX(-50%);
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s;
 }
-@keyframes logo-glow {
-  0%, 100% { filter: blur(1px) drop-shadow(0 0 20px rgba(255,220,150,0.6)) brightness(1.1); }
-  50%      { filter: blur(1.5px) drop-shadow(0 0 28px rgba(255,220,150,0.85)) brightness(1.15); }
+.brand-stand:hover { transform: translateX(-50%) translateY(-6px); }
+
+/* 名牌架底座 —— 木制三角 */
+.stand-base {
+  width: 180px; height: 14px;
+  background: linear-gradient(180deg, #A0704A 0%, #6B4423 100%);
+  border-radius: 3px;
+  box-shadow:
+    0 3px 6px rgba(0,0,0,0.4),
+    inset 0 2px 0 rgba(255,255,255,0.15);
+  position: relative;
+}
+/* 底座木纹 */
+.stand-base::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(90deg,
+    rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 2px,
+    transparent 2px, transparent 14px
+  );
+  border-radius: 3px;
+}
+
+/* 三角支架 */
+.stand-legs {
+  position: absolute;
+  top: -50px; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 50px solid #8B5E34;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+}
+.stand-legs::after {
+  content: '';
+  position: absolute;
+  top: 48px; left: -75px;
+  width: 150px; height: 3px;
+  background: #6B4423;
+}
+
+/* Therapōn logo 摆牌 */
+.stand-logo-card {
+  position: absolute;
+  top: -42px; left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  background: #FFFBF0;
+  border: 2px solid #8B5E34;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.35),
+    inset 0 0 0 1px rgba(255,255,255,0.5);
+  /* 轻微旋转，像真实摆件 */
+  transform: translateX(-50%) rotate(-1.5deg);
+  transition: transform 0.4s;
+}
+.brand-stand:hover .stand-logo-card {
+  transform: translateX(-50%) rotate(-1.5deg) scale(1.03);
+}
+.stand-logo-card img {
+  width: 100%;
+  height: auto;
+}
+.stand-logo-card .stand-title {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  color: #8B5E34;
+  letter-spacing: 3px;
+  margin-top: 2px;
+  font-weight: 700;
 }
 
 /* ============================================================
@@ -400,24 +469,334 @@ html, body {
   box-shadow: inset 0 30px 60px rgba(0,0,0,0.3);
 }
 
-/* 地面道具们 */
-.stall-item {
+/* ============================================================
+   🧊 刨冰机 SVG 容器 + 过家家交互
+============================================================ */
+.shaved-ice {
   position: absolute;
-  font-size: 42px;
+  left: 3%; bottom: 18%;
+  width: 140px; height: 190px;
+  z-index: 7;
+  cursor: pointer;
+  filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.4));
+  transition: transform 0.3s;
+}
+.shaved-ice:hover { transform: translateY(-5px) rotate(-1deg); }
+.shaved-ice svg { width: 100%; height: 100%; }
+
+/* 手摇柄旋转动画（默认慢转） */
+.si-crank-group {
+  transform-origin: 100px 55px;
+  animation: crank-slow 6s linear infinite;
+}
+@keyframes crank-slow { to { transform: rotate(360deg); } }
+.shaved-ice.grinding .si-crank-group {
+  animation: crank-fast 0.4s linear infinite;
+}
+@keyframes crank-fast { to { transform: rotate(360deg); } }
+
+/* 出冰动画 */
+.shaved-ice.grinding .si-ice { animation: ice-grow 1.2s ease-out forwards; }
+@keyframes ice-grow {
+  0%   { transform: scaleY(0.1); opacity: 0.3; }
+  60%  { transform: scaleY(1.15); opacity: 1; }
+  100% { transform: scaleY(1); }
+}
+
+/* 糖浆滴落动画 */
+.shaved-ice.grinding .si-syrup { animation: syrup-fall 1.2s ease-out forwards; }
+@keyframes syrup-fall {
+  0%   { transform: translateY(-20px) scale(0.5); opacity: 0; }
+  70%  { transform: translateY(0) scale(1.05); opacity: 1; }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* 冰屑飞溅粒子 */
+.ice-particle {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particle-fly 1s ease-out forwards;
+}
+@keyframes particle-fly {
+  0%   { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+}
+
+/* ============================================================
+   🍧 糖浆口味选择弹窗（过家家！）
+============================================================ */
+.syrup-menu {
+  position: absolute;
+  top: -220px; left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: #FFFBF0;
+  border: 2px solid #C45A3B;
+  border-radius: 8px;
+  padding: 14px 12px;
+  box-shadow: 4px 4px 0 rgba(196,90,59,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  z-index: 20;
+  white-space: nowrap;
+}
+.shaved-ice.menu-open .syrup-menu {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+.syrup-menu::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #C45A3B;
+}
+.syrup-title {
+  font-size: 11px; color: #C45A3B;
+  letter-spacing: 2px; text-align: center;
+  font-weight: 700; margin-bottom: 10px;
+}
+.syrup-options {
+  display: flex; gap: 8px; justify-content: center;
+}
+.syrup-btn {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.15);
+}
+.syrup-btn:hover { transform: scale(1.15); }
+.syrup-btn[data-flavor="red"]    { background: linear-gradient(180deg, #E47A5B, #C45A3B); }
+.syrup-btn[data-flavor="purple"] { background: linear-gradient(180deg, #B89BBE, #9B7B9F); }
+.syrup-btn[data-flavor="green"]  { background: linear-gradient(180deg, #7AB87A, #5A9A5A); }
+.syrup-btn[data-flavor="blue"]   { background: linear-gradient(180deg, #6B9DD4, #4A7BB8); }
+.syrup-btn[data-flavor="yellow"] { background: linear-gradient(180deg, #F5D48A, #D4B24A); }
+
+/* ============================================================
+   📻 老式晶体管收音机（CSS）
+============================================================ */
+.retro-radio {
+  position: absolute;
+  left: 20%; bottom: 28%;
+  width: 95px; height: 70px;
+  z-index: 7;
+  cursor: pointer;
+  filter: drop-shadow(3px 4px 3px rgba(0,0,0,0.4));
+  transition: transform 0.3s;
+}
+.retro-radio:hover { transform: translateY(-4px) rotate(-2deg); }
+.radio-body {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #8B5E34 0%, #A0704A 40%, #6B4423 100%);
+  border-radius: 6px;
+  border: 2px solid #3D2B1F;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.2),
+    inset 0 -4px 8px rgba(0,0,0,0.4);
+  position: relative;
+  padding: 6px;
+}
+.radio-speaker {
+  position: absolute;
+  top: 8px; left: 8px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle, #2A1C10 0px, #2A1C10 1px, transparent 1px, transparent 4px),
+    radial-gradient(circle, #3D2B1F, #1A1008);
+  border: 3px solid #D4A24A;
+}
+.radio-display {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 42px; height: 22px;
+  background: linear-gradient(180deg, #1A1A2E 0%, #2A2A4A 100%);
+  border: 2px solid #D4A24A;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", monospace;
+  font-size: 8px;
+  color: #8FD48F;
+  text-shadow: 0 0 4px #4FD44F;
+}
+.radio-knob {
+  position: absolute;
+  bottom: 8px; right: 12px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #D4A24A, #8B6F34 60%, #3A2A10 100%);
+  box-shadow:
+    inset 0 -2px 4px rgba(0,0,0,0.5),
+    0 1px 2px rgba(0,0,0,0.4);
+}
+.radio-knob::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 50%;
+  width: 2px; height: 7px;
+  background: #2A1C10;
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
+
+/* ============================================================
+   🎙️ 老式留声机（CSS）
+============================================================ */
+.retro-phono {
+  position: absolute;
+  right: 20%; bottom: 28%;
+  width: 90px; height: 85px;
+  z-index: 7;
+  cursor: pointer;
+  filter: drop-shadow(3px 4px 3px rgba(0,0,0,0.4));
+  transition: transform 0.3s;
+}
+.retro-phono:hover { transform: translateY(-4px) rotate(2deg); }
+.phono-platter {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle,
+      #1A1A1A 0px, #1A1A1A 2px,
+      #2A2A2A 2px, #2A2A2A 3px
+    ),
+    radial-gradient(circle, #2A2A2A, #0A0A0A);
+  box-shadow:
+    0 0 0 4px #6B4423,
+    0 0 0 6px #3D2B1F,
+    inset 0 0 16px rgba(0,0,0,0.8);
+  animation: phono-spin 4s linear infinite;
+}
+@keyframes phono-spin {
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+.phono-label {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #FF9A5C, #C45A3B 70%, #6B2A1C);
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+}
+.phono-tonearm {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 3px; height: 50px;
+  background: linear-gradient(180deg, #D4A24A, #8B6F34);
+  transform-origin: top center;
+  transform: translateX(-50%) rotate(-25deg);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.phono-head {
+  position: absolute;
+  bottom: -4px; left: -3px;
+  width: 9px; height: 6px;
+  background: linear-gradient(180deg, #D4A24A, #8B6F34);
+  border-radius: 1px 1px 3px 3px;
+}
+.phono-pivot {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #D4A24A, #6B4423);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ============================================================
+   🥤 弹珠汽水（玻璃瓶子 CSS）
+============================================================ */
+.marble-soda {
+  position: absolute;
+  right: 5%; bottom: 22%;
+  width: 28px; height: 70px;
+  z-index: 7;
+  cursor: pointer;
+  filter: drop-shadow(2px 4px 3px rgba(0,0,0,0.4));
+  transition: transform 0.3s;
+}
+.marble-soda:hover { transform: translateY(-4px); }
+.ms-bottle {
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg,
+    rgba(200, 220, 240, 0.4) 0%,
+    rgba(230, 210, 230, 0.5) 40%,
+    rgba(200, 200, 255, 0.35) 100%
+  );
+  border: 2px solid rgba(120, 140, 180, 0.6);
+  border-top: none;
+  border-radius: 4px 4px 8px 8px;
+  position: relative;
+  box-shadow:
+    inset -4px 0 8px rgba(100,120,160,0.25),
+    inset 4px 0 8px rgba(255,255,255,0.3);
+}
+.ms-neck {
+  position: absolute;
+  top: -10px; left: 50%;
+  transform: translateX(-50%);
+  width: 12px; height: 12px;
+  background: linear-gradient(180deg, rgba(200,220,240,0.4), rgba(230,210,230,0.5));
+  border: 2px solid rgba(120,140,180,0.6);
+  border-radius: 2px 2px 0 0;
+  border-bottom: none;
+}
+.ms-marble {
+  position: absolute;
+  top: 2px; left: 50%;
+  transform: translateX(-50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #FFFFFF, #C0D0E0 60%, #607080);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.ms-label {
+  position: absolute;
+  top: 20px; left: 0; right: 0;
+  height: 18px;
+  background: linear-gradient(180deg, #C45A3B 0%, #A04A2B 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3);
+}
+
+/* ============================================================
+   🚲 自行车（SVG 内嵌，替换 emoji）
+============================================================ */
+.retro-bike {
+  position: absolute;
+  right: 20%; bottom: 26%;
+  width: 100px; height: 70px;
+  z-index: 7;
+  cursor: pointer;
+  filter: drop-shadow(3px 4px 3px rgba(0,0,0,0.4));
+  transition: transform 0.3s;
+}
+.retro-bike:hover { transform: translateY(-4px) rotate(2deg); }
+
+/* 保留 .stall-item 类的基础样式给剩下两个小道具用 */
+.stall-item {
   filter: drop-shadow(2px 4px 3px rgba(0,0,0,0.35));
   transition: transform 0.3s;
   pointer-events: auto;
   cursor: default;
 }
 .stall-item:hover { transform: translateY(-4px) rotate(-2deg); }
-
-.stall-item.s0 { left: 6%;  bottom: 28%; font-size: 46px; }  /* 刨冰机 */
-.stall-item.s1 { left: 28%; bottom: 32%; font-size: 36px; }  /* 广播 */
-.stall-item.s2 { left: 44%; bottom: 30%; font-size: 38px; }  /* 老零食 */
-.stall-item.s3 { right: 30%; bottom: 26%; font-size: 40px; } /* 留声机 */
-.stall-item.s4 { right: 10%; bottom: 22%; font-size: 50px; } /* 自行车 */
-.stall-item.s5 { left: 56%; bottom: 34%; font-size: 30px; }  /* 汽水 */
-.stall-item.s6 { left: 2%;  bottom: 20%; font-size: 28px; animation: wheel-rotate 20s linear infinite; } /* 自行车轮（微转暗示）*/
+.stall-item.s2 { font-size: 26px; }  /* 老零食 · 小号保留 */
 
 @keyframes wheel-rotate {
   to { transform: rotate(360deg); }
@@ -821,11 +1200,19 @@ blockquote {
   <!-- 屋檐 -->
   <div class="eave"></div>
 
-  <!-- 蓝白条纹挂布 -->
+  <!-- 蓝白条纹挂布（空的，保持纯装饰） -->
   <div class="curtain-wrap">
     <div class="curtain"></div>
-    <!-- Therapōn logo 投影在挂布上 -->
-    <img class="therapon-projected" src="assets/brand/therapon-logo.svg" alt="忒拉蓬 Therapōn" />
+  </div>
+
+  <!-- 🪧 木制三角名牌架 + Therapōn logo（摊位中央实体展示）-->
+  <div class="brand-stand" title="忒拉蓬 Therapōn · 太阳神的后花园">
+    <div class="stand-base"></div>
+    <div class="stand-legs"></div>
+    <div class="stand-logo-card">
+      <img src="assets/brand/therapon-icon.svg" alt="忒拉蓬 Therapōn" />
+      <span class="stand-title">THERAPŌN</span>
+    </div>
   </div>
 
   <!-- 老式放映机 + 光束 -->
@@ -839,15 +1226,179 @@ blockquote {
   <!-- 自行车后轮（微转暗示） -->
   <div class="bike-wheel"></div>
 
-  <!-- 摊位地面 + 道具 -->
+  <!-- 摊位地面 + 真实道具（CSS 画的！不是 emoji） -->
   <div class="ground">
     <div class="ground-wood"></div>
-    <span class="stall-item s0" title="刨冰机">🧊</span>
-    <span class="stall-item s1" title="广播">📻</span>
-    <span class="stall-item s2" title="老零食">🍪</span>
-    <span class="stall-item s3" title="留声机">🎙️</span>
-    <span class="stall-item s4" title="自行车">🚲</span>
-    <span class="stall-item s5" title="弹珠汽水">🥤</span>
+
+    <!-- 🧊 真实刨冰机 · inline SVG（金属机身+透明冰碗+旋转手摇柄） + 过家家交互 -->
+    <div class="shaved-ice" title="刨冰机 · 点一下出冰！再选糖浆口味" data-section="palette" id="shavedIce">
+      <!-- 糖浆选择弹窗 -->
+      <div class="syrup-menu">
+        <div class="syrup-title">🍧 选糖浆口味</div>
+        <div class="syrup-options">
+          <button class="syrup-btn" data-flavor="red"    title="草莓 · #C45A3B"></button>
+          <button class="syrup-btn" data-flavor="purple" title="葡萄 · #9B7B9F"></button>
+          <button class="syrup-btn" data-flavor="green"  title="抹茶"></button>
+          <button class="syrup-btn" data-flavor="blue"   title="波子汽水"></button>
+          <button class="syrup-btn" data-flavor="yellow" title="柠檬"></button>
+        </div>
+      </div>
+
+      <svg viewBox="0 0 140 190" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- 红色开关光晕 filter -->
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <!-- 金属机身渐变 -->
+          <linearGradient id="siMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"  stop-color="#D4D4D4"/>
+            <stop offset="25%" stop-color="#8A8A8A"/>
+            <stop offset="40%" stop-color="#C4C4C4"/>
+            <stop offset="55%" stop-color="#7A7A7A"/>
+            <stop offset="70%" stop-color="#B0B0B0"/>
+            <stop offset="100%" stop-color="#5A5A5A"/>
+          </linearGradient>
+          <!-- 冰碗渐变 -->
+          <linearGradient id="siBowl" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"  stop-color="rgba(200,230,255,0.8)"/>
+            <stop offset="40%" stop-color="rgba(180,215,245,0.65)"/>
+            <stop offset="100%" stop-color="rgba(160,200,235,0.75)"/>
+          </linearGradient>
+          <!-- 刨冰渐变 -->
+          <radialGradient id="siIce" cx="50%" cy="100%" r="80%">
+            <stop offset="0%"  stop-color="#FFE4E4"/>
+            <stop offset="50%" stop-color="#FFCCCC"/>
+            <stop offset="100%" stop-color="rgba(255,235,235,0.9)"/>
+          </radialGradient>
+          <!-- 底座渐变 -->
+          <linearGradient id="siBase" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"  stop-color="#8B8B8B"/>
+            <stop offset="50%" stop-color="#4A4A4A"/>
+            <stop offset="100%" stop-color="#2A2A2A"/>
+          </linearGradient>
+          <!-- 红色开关渐变 -->
+          <radialGradient id="siSwitch" cx="35%" cy="35%">
+            <stop offset="0%"  stop-color="#FF9A9A"/>
+            <stop offset="55%" stop-color="#C45A3B"/>
+            <stop offset="100%" stop-color="#6B2A1C"/>
+          </radialGradient>
+          <!-- 糖浆渐变（默认草莓红） -->
+          <linearGradient id="siSyrup" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"  stop-color="#E47A5B"/>
+            <stop offset="100%" stop-color="#A04A2B"/>
+          </linearGradient>
+          <!-- 手摇柄旋钮渐变 -->
+          <radialGradient id="siKnob" cx="35%" cy="35%">
+            <stop offset="0%"  stop-color="#F5D48A"/>
+            <stop offset="60%" stop-color="#B08A4A"/>
+            <stop offset="100%" stop-color="#5A4020"/>
+          </radialGradient>
+        </defs>
+
+        <!-- 底座 -->
+        <rect x="10" y="170" width="120" height="16" rx="3" fill="url(#siBase)"/>
+        <rect x="14" y="172" width="112" height="2" fill="rgba(255,255,255,0.15)"/>
+
+        <!-- 主机身 -->
+        <rect x="20" y="70" width="100" height="100" rx="6" ry="10" fill="url(#siMetal)"/>
+        <!-- 机身高光 -->
+        <rect x="23" y="73" width="12" height="94" rx="2" fill="rgba(255,255,255,0.45)"/>
+        <!-- 红色开关按钮 -->
+        <circle cx="106" cy="88" r="7" fill="url(#siSwitch)" filter="url(#glow)"/>
+
+        <!-- 透明冰碗（放在机身前面） -->
+        <g transform="translate(70,100)">
+          <!-- 碗体 -->
+          <ellipse cx="0" cy="30" rx="35" ry="28" fill="url(#siBowl)" stroke="rgba(120,160,200,0.7)" stroke-width="2"/>
+          <!-- 碗口高光 -->
+          <ellipse cx="0" cy="4" rx="35" ry="5" fill="rgba(255,255,255,0.35)"/>
+          <!-- 刨冰！（带动画） -->
+          <g class="si-ice" style="transform-origin: 0px 30px;">
+            <ellipse cx="0" cy="22" rx="26" ry="18" fill="url(#siIce)"/>
+            <ellipse cx="-8" cy="14" rx="14" ry="10" fill="#FFE8E8" opacity="0.8"/>
+            <ellipse cx="8" cy="16" rx="12" ry="8" fill="#FFDAD6" opacity="0.9"/>
+            <ellipse cx="0" cy="10" rx="10" ry="7" fill="#FFF0E8" opacity="0.7"/>
+          </g>
+          <!-- 糖浆层（带颜色！会变） -->
+          <g class="si-syrup" style="transform-origin: 0px 18px;">
+            <ellipse cx="0" cy="6" rx="22" ry="9" fill="url(#siSyrup)"/>
+            <!-- 糖浆滴落 -->
+            <path d="M-18 14 Q-14 24 -10 14" fill="url(#siSyrup)" opacity="0.7"/>
+            <path d="M6 14 Q10 22 14 14" fill="url(#siSyrup)" opacity="0.7"/>
+          </g>
+        </g>
+
+        <!-- 手摇柄组（旋转！） -->
+        <g class="si-crank-group">
+          <!-- 曲柄 -->
+          <rect x="14" y="52" width="42" height="5" rx="2" fill="url(#siKnob)"/>
+          <!-- 旋钮 -->
+          <circle cx="58" cy="54" r="8" fill="url(#siKnob)"/>
+          <!-- 金属轴 -->
+          <circle cx="14" cy="54" r="5" fill="#444" stroke="#222" stroke-width="1"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 📻 老式晶体管收音机 -->
+    <div class="retro-radio" title="收音机 · 字体 Typography" data-section="typo">
+      <div class="radio-body">
+        <div class="radio-speaker"></div>
+        <div class="radio-display">FM 88.8</div>
+        <div class="radio-knob"></div>
+      </div>
+    </div>
+
+    <!-- 🍪 老零食（emoji 临时占位，优先级最低） -->
+    <span class="stall-item s2" title="老零食 · 下载 Asset Kit" data-section="download">🍪</span>
+
+    <!-- 🎙️ 老式留声机（黑胶旋转 + 唱臂） -->
+    <div class="retro-phono" title="留声机 · Logo 拆解" data-section="anatomy">
+      <div class="phono-platter">
+        <div class="phono-label"></div>
+      </div>
+      <div class="phono-pivot"></div>
+      <div class="phono-tonearm">
+        <div class="phono-head"></div>
+      </div>
+    </div>
+
+    <!-- 🚲 自行车（SVG 画） -->
+    <svg class="retro-bike" viewBox="0 0 120 80" title="自行车 · 命名体系" data-section="name" xmlns="http://www.w3.org/2000/svg">
+      <!-- 后轮 -->
+      <circle cx="30" cy="60" r="16" fill="none" stroke="#2B2B2B" stroke-width="2.5"/>
+      <circle cx="30" cy="60" r="2" fill="#555"/>
+      <!-- 前轮 -->
+      <circle cx="90" cy="60" r="16" fill="none" stroke="#2B2B2B" stroke-width="2.5"/>
+      <circle cx="90" cy="60" r="2" fill="#555"/>
+      <!-- 车架 -->
+      <line x1="30" y1="60" x2="60" y2="35" stroke="#C45A3B" stroke-width="3" stroke-linecap="round"/>
+      <line x1="60" y1="35" x2="90" y2="60" stroke="#C45A3B" stroke-width="3" stroke-linecap="round"/>
+      <line x1="60" y1="35" x2="30" y2="60" stroke="#C45A3B" stroke-width="2" stroke-linecap="round"/>
+      <line x1="60" y1="35" x2="55" y2="15" stroke="#C45A3B" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- 车座 -->
+      <ellipse cx="58" cy="32" rx="8" ry="3" fill="#3D2B1F"/>
+      <!-- 车把 -->
+      <line x1="55" y1="15" x2="72" y2="10" stroke="#2B2B2B" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="72" cy="10" r="2.5" fill="#2B2B2B"/>
+      <!-- 脚踏 -->
+      <line x1="60" y1="35" x2="60" y2="60" stroke="#2B2B2B" stroke-width="2"/>
+      <circle cx="60" cy="60" r="3" fill="#2B2B2B"/>
+    </svg>
+
+    <!-- 🥤 弹珠汽水（玻璃瓶子） -->
+    <div class="marble-soda" title="弹珠汽水 · Logo 画廊" data-section="gallery">
+      <div class="ms-neck"></div>
+      <div class="ms-bottle">
+        <div class="ms-marble"></div>
+        <div class="ms-label"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -864,7 +1415,7 @@ blockquote {
   </div>
 
   <!-- 01 · 品牌三层命名体系 → 便签墙 -->
-  <section>
+  <section id="name">
     <h3>01 · 品牌三层命名体系</h3>
     <p>忒拉蓬出品的语言学习产品，从工作室到技术内核，三层希腊语命名体系：</p>
 
@@ -897,7 +1448,7 @@ blockquote {
   </section>
 
   <!-- 02 · Logo 变体（品牌释义 + Therapōn logo 画廊） -->
-  <section>
+  <section id="gallery">
     <h3>02 · Logo 画廊 Logo Gallery</h3>
 
     <h4>🌀 定稿版 · 同心圆吸积盘（太阳神坍缩）</h4>
@@ -991,7 +1542,7 @@ blockquote {
   </section>
 
   <!-- 03 · Logo 拆解 -->
-  <section>
+  <section id="anatomy">
     <h3>03 · Logo 拆解 Logo Anatomy</h3>
 
     <div class="anatomy">
@@ -1026,7 +1577,7 @@ blockquote {
   </section>
 
   <!-- 04 · Logo 变体 -->
-  <section>
+  <section id="variations">
     <h3>04 · Logo 变体 Logo Variations</h3>
     <div class="logo-grid">
       <div class="logo-var"><img src="assets/brand/logo-muse-phone.svg" /><div class="label">A. 透明矢量 SVG</div></div>
@@ -1039,7 +1590,7 @@ blockquote {
   </section>
 
   <!-- 05 · 色板 -->
-  <section>
+  <section id="palette">
     <h3>05 · 品牌色板 Color Palette</h3>
     <div class="colors">
       <div class="color"><div class="swatch sun-red"></div><div class="hex">#C45A3B</div><div class="name">日轮红</div></div>
@@ -1051,7 +1602,7 @@ blockquote {
   </section>
 
   <!-- 06 · 字体 -->
-  <section>
+  <section id="typo">
     <h3>06 · 字体 Typography</h3>
     <div class="type-samples">
       <div class="head">Musē Phōnē</div>
@@ -1066,7 +1617,7 @@ blockquote {
   </section>
 
   <!-- 07 · 下载 -->
-  <section>
+  <section id="download">
     <h3>07 · 下载 Asset Kit</h3>
     <p>所有资源放在 <code>/assets/brand/</code>，直接点链接下载：</p>
     <div class="dl-grid" style="margin-top:16px">
@@ -1088,5 +1639,256 @@ blockquote {
   </div>
 
 </div>
+
+<!-- ============================================================ -->
+<!-- 🎭 交互脚本 -->
+<!-- ============================================================ -->
+<script>
+(function() {
+  // 1. 道具点击 → smooth scroll 到对应章节（覆盖所有新 CSS 道具类）
+  const items = document.querySelectorAll('.stall-item, .shaved-ice, .retro-radio, .retro-phono, .retro-bike, .marble-soda');
+  items.forEach(item => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => {
+      const targetId = item.dataset.section;
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // 高亮章节标题 1.5s
+        const h = target.querySelector('h3');
+        if (h) {
+          h.style.transition = 'all 0.4s';
+          h.style.color = '#C45A3B';
+          h.style.textShadow = '0 0 12px rgba(196,90,59,0.5)';
+          setTimeout(() => { h.style.textShadow = ''; }, 1500);
+        }
+      }
+    });
+  });
+
+  // 2. 滚动时场景层视差（地面慢速移动，天空不動）
+  const scene = document.querySelector('.scene');
+  const ground = document.querySelector('.ground');
+  const skyLayers = document.querySelectorAll('.cloud, .sun-orb, .horizon');
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const sy = window.scrollY;
+        if (ground) ground.style.transform = `translateY(${sy * 0.3}px)`;
+        skyLayers.forEach((el, i) => {
+          el.style.transform = `translateY(${sy * (0.05 + i * 0.02)}px)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // 3. 光束随机 flicker（模拟真实放映机不稳定）
+  const beam = document.querySelector('.light-beam::before');
+  const beamContainer = document.querySelector('.light-beam');
+  let flickerTimer;
+  const randomFlicker = () => {
+    if (beamContainer) {
+      const randomOpacity = 0.7 + Math.random() * 0.3;
+      beamContainer.style.setProperty('--beam-opacity', randomOpacity);
+      beamContainer.style.opacity = randomOpacity;
+    }
+    flickerTimer = setTimeout(randomFlicker, 1500 + Math.random() * 3500);
+  };
+  randomFlicker();
+
+  // 4. 名牌架进入视口时微弹一下（IntersectionObserver）
+  const stand = document.querySelector('.brand-stand');
+  if (stand && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          stand.style.animation = 'stand-pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          obs.unobserve(stand);
+        }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(stand);
+  }
+
+  // ============================================================
+  // 🧊 刨冰机过家家交互！
+  // ============================================================
+  const iceMachine = document.getElementById('shavedIce');
+  if (iceMachine) {
+    let state = 'idle'; // idle → grinding → menu → done
+    let grindTimer = null;
+
+    // 糖浆色表（跟品牌色板对齐！）
+    const FLAVORS = {
+      red:    { name: '草莓', colors: ['#E47A5B', '#C45A3B', '#A04A2B'], hex: '#C45A3B' },
+      purple: { name: '葡萄', colors: ['#B89BBE', '#9B7B9F', '#7A5A7E'], hex: '#9B7B9F' },
+      green:  { name: '抹茶', colors: ['#7AB87A', '#5A9A5A', '#3A7A3A'], hex: '#5A9A5A' },
+      blue:   { name: '波子', colors: ['#6B9DD4', '#4A7BB8', '#3A5F96'], hex: '#4A7BB8' },
+      yellow: { name: '柠檬', colors: ['#F5D48A', '#D4B24A', '#A08A30'], hex: '#D4B24A' }
+    };
+
+    // Web Audio API 生成"咔嚓咔嚓"出冰音效
+    let audioCtx = null;
+    const playShaveSound = () => {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        for (let i = 0; i < 3; i++) {
+          setTimeout(() => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'square';
+            osc.frequency.value = 200 + Math.random() * 100;
+            gain.gain.value = 0.05;
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start();
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+            osc.stop(audioCtx.currentTime + 0.1);
+          }, i * 120);
+        }
+      } catch(e) { /* 浏览器阻止自动播放 */ }
+    };
+
+    // 出冰屑飞溅粒子
+    const spawnIceParticles = () => {
+      const svg = iceMachine.querySelector('svg');
+      const rect = iceMachine.getBoundingClientRect();
+      const machineRect = svg ? iceMachine.getBoundingClientRect() : rect;
+      for (let i = 0; i < 12; i++) {
+        const p = document.createElement('div');
+        p.className = 'ice-particle';
+        const startX = machineRect.left + machineRect.width * 0.5 + (Math.random() - 0.5) * 60;
+        const startY = machineRect.top + machineRect.height * 0.4;
+        p.style.left = startX + 'px';
+        p.style.top = startY + 'px';
+        p.style.setProperty('--dx', (Math.random() - 0.5) * 80 + 'px');
+        p.style.setProperty('--dy', (30 + Math.random() * 60) + 'px');
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 1000);
+      }
+    };
+
+    // 糖浆颜色换 SVG gradient stop
+    const applyFlavor = (flavor) => {
+      const f = FLAVORS[flavor];
+      const stops = iceMachine.querySelectorAll('#siSyrup stop');
+      if (stops.length >= 2) {
+        stops[0].setAttribute('stop-color', f.colors[0]);
+        stops[1].setAttribute('stop-color', f.colors[2]);
+      }
+      // 刨冰也染色！
+      const iceStops = iceMachine.querySelectorAll('#siIce stop');
+      if (iceStops.length >= 3) {
+        iceStops[0].setAttribute('stop-color', f.colors[0]);
+        iceStops[1].setAttribute('stop-color', f.colors[1]);
+      }
+      // 名牌架 logo 也微微染色
+      const standLogo = document.querySelector('.stand-logo-card');
+      if (standLogo) {
+        standLogo.style.transition = 'filter 0.5s';
+        standLogo.style.filter = `drop-shadow(0 0 16px ${f.hex}66) hue-rotate(${Math.random() * 20 - 10}deg)`;
+      }
+    };
+
+    // 点刨冰机！
+    iceMachine.addEventListener('click', (e) => {
+      // 如果点的是糖浆按钮，不触发刨冰机逻辑
+      if (e.target.classList.contains('syrup-btn')) return;
+
+      if (state === 'idle') {
+        // 开始刨冰！
+        state = 'grinding';
+        iceMachine.classList.add('grinding');
+        playShaveSound();
+        spawnIceParticles();
+
+        // 1.2s 后出冰结束，弹糖浆菜单
+        grindTimer = setTimeout(() => {
+          iceMachine.classList.remove('grinding');
+          state = 'menu';
+          iceMachine.classList.add('menu-open');
+        }, 1200);
+      } else if (state === 'menu') {
+        // 关菜单
+        iceMachine.classList.remove('menu-open');
+        state = 'idle';
+      }
+    });
+
+    // 糖浆选口味
+    iceMachine.querySelectorAll('.syrup-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const flavor = btn.dataset.flavor;
+        applyFlavor(flavor);
+        // 选完关菜单 + 跳转色板
+        iceMachine.classList.remove('menu-open');
+        state = 'idle';
+        // 高亮色板章节 + 滚动过去
+        const palette = document.getElementById('palette');
+        if (palette) {
+          palette.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const h = palette.querySelector('h3');
+          if (h) {
+            h.style.transition = 'all 0.4s';
+            h.style.textShadow = '0 0 16px rgba(196,90,59,0.6)';
+            setTimeout(() => { h.style.textShadow = ''; }, 2000);
+          }
+        }
+        // 小通知
+        showToast(`🍧 ${FLAVORS[flavor].name}糖浆！选的好～`);
+      });
+    });
+
+    // 点页面其他地方关菜单
+    document.addEventListener('click', (e) => {
+      if (!iceMachine.contains(e.target) && iceMachine.classList.contains('menu-open')) {
+        iceMachine.classList.remove('menu-open');
+        state = 'idle';
+      }
+    });
+  }
+
+  // 小 toast 通知
+  const showToast = (msg) => {
+    let t = document.querySelector('.playhouse-toast');
+    if (!t) {
+      t = document.createElement('div');
+      t.className = 'playhouse-toast';
+      Object.assign(t.style, {
+        position: 'fixed', bottom: '80px', left: '50%',
+        transform: 'translateX(-50%) translateY(20px)',
+        background: '#FFFBF0', border: '2px solid #C45A3B',
+        padding: '10px 22px', borderRadius: '24px',
+        fontSize: '13px', color: '#C45A3B', fontWeight: 600,
+        boxShadow: '3px 3px 0 rgba(196,90,59,0.3)',
+        opacity: '0', pointerEvents: 'none',
+        transition: 'all 0.3s', zIndex: '9999'
+      });
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.style.opacity = '1';
+    t.style.transform = 'translateX(-50%) translateY(0)';
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => {
+      t.style.opacity = '0';
+      t.style.transform = 'translateX(-50%) translateY(20px)';
+    }, 2200);
+  };
+})();
+</script>
+
+<style>
+/* 名牌架入场弹跳动画 */
+@keyframes stand-pop {
+  0%   { transform: translateX(-50%) translateY(20px) scale(0.8); opacity: 0; }
+  60%  { transform: translateX(-50%) translateY(-8px) scale(1.05); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(0) scale(1); }
+}
+</style>
 </body>
 </html>
